@@ -38,7 +38,13 @@ const renderApps = (appsToRender) => {
                 <img src="${app.image}" alt="${app.name}">
                 <div>${app.name}</div>
             </div>
-        
+            <div class="options" onclick="toggleOptions(event)">
+                ⋮
+                <ul class="hidden">
+                    <li onclick="editApp(${app.id})">Edit</li>
+                    <li onclick="deleteApp(${app.id})">Delete</li>
+                </ul>
+            </div>
         `;
         appElement.addEventListener('dragstart', handleDragStart);
         appElement.addEventListener('dragover', handleDragOver);
@@ -147,24 +153,5 @@ overlay.addEventListener('click', hideAddAppForm);
 showAddAppFormButton.addEventListener('click', showAddAppForm);
 appForm.addEventListener('submit', saveApp);
 searchInput.addEventListener('input', filterApps);
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    let keySequence = [];
-    const correctSequence = ['9', '5', '9', '5'];
-
-    document.addEventListener('keydown', (event) => {
-        keySequence.push(event.key);
-
-        if (keySequence.length > correctSequence.length) {
-            keySequence.shift();
-        }
-
-        // Check if the sequence matches
-        if (keySequence.join('') === correctSequence.join('')) {
-            window.location.href = 'http://127.0.0.1:5000/admin';
-        }
-    });
-});
 
 renderApps(apps);

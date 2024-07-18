@@ -1,0 +1,14 @@
+from flask import Flask, redirect, url_for, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "default_website"
+
+@app.route('/admin')
+def default():
+    return render_template('default.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)

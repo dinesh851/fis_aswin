@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIS WEB</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="navbar">
         <span>FIS</span>
         <input type="text" id="search" placeholder="Search">
         <button id="showAddAppForm">Add App</button>
-        <a href="http://127.0.0.1:5000/admin" style="text-decoration: none;">
-            <button>admin panel</button>
-          </a>
+        <button>save changes        </button>
               </div>
 
     <div class="wrapper">
@@ -32,6 +30,6 @@
         </form>
     </div>
 
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
