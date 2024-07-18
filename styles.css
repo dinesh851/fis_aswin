@@ -44,7 +44,7 @@ body {
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content:center; 
+    justify-content: center; 
     width: 1000px;
     grid-column: 2.8 / 3;  
 }
@@ -57,6 +57,7 @@ body {
     height: 100px;
     flex: 1 0 calc(16.6667% - 30px);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: move; /* Indicate draggable items */
 }
 
 .app:hover {
@@ -70,15 +71,22 @@ body {
     height: 30px;
     transition: transform 0.3s ease-out;
 }
-
-.app:hover img {
-    transform: scale(1);
+.app img:hover {
+    transform: scale(1.8); /* Adjust the scale factor as needed */
 }
+ 
+
+.app.dragging {
+    opacity: 0.5;
+}
+.app.over {
+    border: 2px outset     #fff;
+}
+
 
 .options {
     position: relative;
-    display: inline-block; /* Ensures the box size adjusts to its content */
-
+    display: inline-block;
     cursor: pointer;
     bottom: 50px;
     left: 50px;

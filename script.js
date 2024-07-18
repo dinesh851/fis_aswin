@@ -21,17 +21,18 @@ const appGrid = document.getElementById('appGrid');
 const searchInput = document.getElementById('search');
 const showAddAppFormButton = document.getElementById('showAddAppForm');
 const addAppForm = document.getElementById('addAppForm');
-const overlay = document.getElementById('overlay');
 const appForm = document.getElementById('appForm');
-const appIdInput = document.getElementById('appId');
-const appNameInput = document.getElementById('appName');
-const appURLInput = document.getElementById('appURL');
+const overlay = document.getElementById('overlay');
+
+let draggedElementIndex;
 
 const renderApps = (appsToRender) => {
     appGrid.innerHTML = '';
-    appsToRender.forEach(app => {
+    appsToRender.forEach((app, index) => {
         const appElement = document.createElement('div');
         appElement.className = 'app';
+        appElement.setAttribute('draggable', 'true');
+        appElement.setAttribute('data-index', index);
         appElement.innerHTML = `
             <div onclick="window.open('${app.url}', '_blank')" style="cursor: pointer;">
                 <img src="${app.image}" alt="${app.name}">
@@ -45,93 +46,112 @@ const renderApps = (appsToRender) => {
                 </ul>
             </div>
         `;
+        appElement.addEventListener('dragstart', handleDragStart);
+        appElement.addEventListener('dragover', handleDragOver);
+        appElement.addEventListener('drop', handleDrop);
+        appElement.addEventListener('dragend', handleDragEnd);
         appGrid.appendChild(appElement);
     });
 };
 
-
-const toggleOptions = (event) => {
-    event.stopPropagation();  
-    const optionsDiv = event.currentTarget;
-    const optionsList = optionsDiv.querySelector('ul');
-    if (optionsList) {
-        optionsList.classList.toggle('hidden'); 
-    } else {
-        console.error('Unable to find optionsList within optionsDiv:', optionsDiv);
-    }
+const handleDragStart = (event) => {
+    draggedElementIndex = event.currentTarget.getAttribute('data-index');
+    event.currentTarget.classList.add('dragging');
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/html', event.currentTarget.innerHTML);
 };
 
-searchInput.addEventListener('input', () => {
-    const searchTerm = searchInput.value.trim().toLowerCase(); 
+const handleDragOver = (event) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+    event.currentTarget.classList.add('over');
+};
+
+const handleDrop = (event) => {
+    event.stopPropagation();
+    const targetElementIndex = event.currentTarget.getAttribute('data-index');
+    if (draggedElementIndex !== targetElementIndex) {
+        const temp = apps[draggedElementIndex];
+        apps[draggedElementIndex] = apps[targetElementIndex];
+        apps[targetElementIndex] = temp;
+        renderApps(apps);
+    }
+    event.currentTarget.classList.remove('over');
+};
+
+const handleDragEnd = () => {
+    const draggingElement = document.querySelector('.dragging');
+    if (draggingElement) {
+        draggingElement.classList.remove('dragging');
+    }
+    draggedElementIndex = null;
+};
+
+const filterApps = () => {
+    const searchTerm = searchInput.value.toLowerCase();
     const filteredApps = apps.filter(app => app.name.toLowerCase().includes(searchTerm));
     renderApps(filteredApps);
-});
-showAddAppFormButton.addEventListener('click', () => {
-    appIdInput.value = '';  
-    appNameInput.value = '';  
-    appURLInput.value = '';  
-    addAppForm.style.display = 'block';  
-    overlay.style.display = 'block';  
-});
+};
 
-overlay.addEventListener('click', () => {
-    addAppForm.style.display = 'none'; 
-    overlay.style.display = 'none';  
-});
+const toggleOptions = (event) => {
+    event.stopPropagation();
+    const options = event.currentTarget.querySelector('ul');
+    options.classList.toggle('hidden');
+};
 
-appForm.addEventListener('submit', (event) => {
+const showAddAppForm = () => {
+    addAppForm.style.display = 'block';
+    overlay.style.display = 'block';
+};
+
+const hideAddAppForm = () => {
+    addAppForm.style.display = 'none';
+    overlay.style.display = 'none';
+};
+
+const saveApp = (event) => {
     event.preventDefault();
-    const appId = appIdInput.value;
-    const appName = appNameInput.value;
-    const appURL = appURLInput.value;
-    const appImage = `https://www.google.com/s2/favicons?domain=${new URL(appURL).hostname}`;
-
+    const appId = document.getElementById('appId').value;
+    const appName = document.getElementById('appName').value;
+    const appURL = document.getElementById('appURL').value;
     if (appId) {
-        const appIndex = apps.findIndex(app => app.id === parseInt(appId));
-        if (appIndex !== -1) {
-            apps[appIndex].name = appName;
-            apps[appIndex].url = appURL;
-            apps[appIndex].image = appImage;
-        }
+        const appIndex = apps.findIndex(app => app.id == appId);
+        apps[appIndex] = { id: parseInt(appId), name: appName, url: appURL, image: `https://www.google.com/s2/favicons?domain=${appURL}` };
     } else {
         const newApp = {
-            id: apps.length + 1,
+            id: apps.length ? Math.max(...apps.map(app => app.id)) + 1 : 1,
             name: appName,
             url: appURL,
-            image: appImage
+            image: `https://www.google.com/s2/favicons?domain=${appURL}`
         };
         apps.push(newApp);
     }
-
     renderApps(apps);
+    hideAddAppForm();
     appForm.reset();
-    addAppForm.style.display = 'none';
-    overlay.style.display = 'none'; 
-});
-
-appGrid.addEventListener('click', (event) => {
-    if (event.target.classList.contains('options')) {
-        toggleOptions(event);
-    }
-});
-
-const editApp = (appId) => {
-    const appToEdit = apps.find(app => app.id === appId);
-    if (appToEdit) {
-        appIdInput.value = appToEdit.id;
-        appNameInput.value = appToEdit.name;
-        appURLInput.value = appToEdit.url;
-        addAppForm.style.display = 'block';
-        overlay.style.display = 'block';
-    }
 };
 
-const deleteApp = (appId) => {
-    const index = apps.findIndex(app => app.id === appId);
-    if (index !== -1) {
-        apps.splice(index, 1);
-        renderApps(apps); 
-    }
+const editApp = (id) => {
+    const app = apps.find(app => app.id === id);
+    document.getElementById('appId').value = app.id;
+    document.getElementById('appName').value = app.name;
+    document.getElementById('appURL').value = app.url;
+    showAddAppForm();
 };
+
+const deleteApp = (id) => {
+    const appIndex = apps.findIndex(app => app.id === id);
+    apps.splice(appIndex, 1);
+    renderApps(apps);
+};
+
+document.addEventListener('click', () => {
+    document.querySelectorAll('.options ul').forEach(ul => ul.classList.add('hidden'));
+});
+
+overlay.addEventListener('click', hideAddAppForm);
+showAddAppFormButton.addEventListener('click', showAddAppForm);
+appForm.addEventListener('submit', saveApp);
+searchInput.addEventListener('input', filterApps);
 
 renderApps(apps);
