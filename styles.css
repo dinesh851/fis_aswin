@@ -79,9 +79,9 @@ body {
 .app.dragging {
     opacity: 0.5;
 }
-.app.over {
+/* .app.over {
     border: 2px outset     #fff;
-}
+} */
 
 
 .options {
