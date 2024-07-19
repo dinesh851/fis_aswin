@@ -1,21 +1,32 @@
-const apps = [
-    { id: 1, name: 'Google', url: 'https://www.google.com/', image: 'https://www.google.com/s2/favicons?domain=www.google.com' },
-    { id: 2, name: 'ChatGPT', url: 'https://chatgpt.com/', image: 'https://www.google.com/s2/favicons?domain=chatgpt.com' },
-    { id: 3, name: 'Dropbox', url: 'https://www.dropbox.com/', image: 'https://www.google.com/s2/favicons?domain=www.dropbox.com' },
-    { id: 4, name: 'Facebook', url: 'https://www.facebook.com/', image: 'https://www.google.com/s2/favicons?domain=www.facebook.com' },
-    { id: 5, name: 'Instagram', url: 'https://www.instagram.com/', image: 'https://www.google.com/s2/favicons?domain=www.instagram.com' },
-    { id: 6, name: 'Spotify', url: 'https://open.spotify.com/', image: 'https://www.google.com/s2/favicons?domain=open.spotify.com' },
-    { id: 7, name: 'Snapchat', url: 'https://www.snapchat.com/', image: 'https://www.google.com/s2/favicons?domain=www.snapchat.com' },
-    { id: 8, name: 'YouTube', url: 'https://www.youtube.com/', image: 'https://www.google.com/s2/favicons?domain=www.youtube.com' },
-    { id: 9, name: 'LinkedIn', url: 'https://www.linkedin.com/', image: 'https://www.google.com/s2/favicons?domain=www.linkedin.com' },
-    { id: 10, name: 'Naukri', url: 'https://www.naukri.com/', image: 'https://www.google.com/s2/favicons?domain=www.naukri.com' },
-    { id: 11, name: 'WhatsApp', url: 'https://www.whatsapp.com/', image: 'https://www.google.com/s2/favicons?domain=www.whatsapp.com' },
-    { id: 12, name: 'Skype', url: 'https://www.skype.com/en/features/skype-web/', image: 'https://www.google.com/s2/favicons?domain=www.skype.com' },
-    { id: 13, name: 'PayPal', url: 'https://www.paypal.com/in/home', image: 'https://www.google.com/s2/favicons?domain=www.paypal.com' },
-    { id: 14, name: 'Walmart', url: 'https://www.walmart.com/', image: 'https://www.google.com/s2/favicons?domain=www.walmart.com' },
-    { id: 15, name: 'Pinterest', url: 'https://in.pinterest.com/', image: 'https://www.google.com/s2/favicons?domain=in.pinterest.com' },
-    { id: 16, name: 'X', url: 'https://x.com/', image: 'https://www.google.com/s2/favicons?domain=x.com' }
-];
+ // Fetch data from list.json
+ async function fetchApps() {
+    try {
+        const response = await fetch('http://127.0.0.1:5500/list.json');
+        // Check if the response is OK (status in the range 200-299)
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        // Parse the JSON data
+        const data = await response.json();
+        // Process the JSON data
+        const apps = data.map(item => ({
+            groupid: item.group_id, 
+            group_name:item.group_name,
+            id: item.id,
+            name: item.name,
+            url: item.url,
+            image: item.image
+        }));
+        
+        // Return the resulting array
+        return apps;
+    } catch (error) {
+        // Handle any errors that occurred during the fetch
+        console.error('There was a problem with the fetch operation:', error);
+        return []; // Return an empty array in case of an error
+    }
+}
+
 
 const appGrid = document.getElementById('appGrid');
 const searchInput = document.getElementById('search');
@@ -27,8 +38,14 @@ const overlay = document.getElementById('overlay');
 let draggedElementIndex;
 
 const renderApps = (appsToRender) => {
+
+    fetchApps().then(a => {
+        console.log(a); // Logs the apps array to the console
+        apps=a
+
     appGrid.innerHTML = '';
-    appsToRender.forEach((app, index) => {
+    apps.forEach((app, index) => {
+        
         const appElement = document.createElement('div');
         appElement.className = 'app';
         appElement.setAttribute('draggable', 'true');
@@ -51,7 +68,8 @@ const renderApps = (appsToRender) => {
         appElement.addEventListener('drop', handleDrop);
         appElement.addEventListener('dragend', handleDragEnd);
         appGrid.appendChild(appElement);
-    });
+});
+});
 };
 
 const handleDragStart = (event) => {
@@ -154,4 +172,4 @@ showAddAppFormButton.addEventListener('click', showAddAppForm);
 appForm.addEventListener('submit', saveApp);
 searchInput.addEventListener('input', filterApps);
 
-renderApps(apps);
+renderApps( );

@@ -60,10 +60,10 @@ body {
     cursor: move; /* Indicate draggable items */
 }
 
-.app:hover {
+/* .app:hover {
     background-color: #3a4a61;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-}
+} */
 
 .app img {
     margin-top: 15px;
