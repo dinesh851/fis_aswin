@@ -3,112 +3,91 @@
         "group_id": 1,
         "group_name": "intui",
         "id": 1,
-        "name": "Google",
-        "url": "https://www.google.com/",
-        "image": "https://www.google.com/s2/favicons?domain=www.google.com"
+        "name": "Dropbox",
+        "url": "https://www.dropbox.com/"
     },
     {
         "group_id": 1,
         "group_name": "intui",
         "id": 2,
-        "name": "ChatGPT",
-        "url": "https://chatgpt.com/",
-        "image": "https://www.google.com/s2/favicons?domain=chatgpt.com"
+        "name": "tradingapp",
+        "url": "https://github.com/NamachiS007/Webappdemo/blob/main/WebApplication.html"
     },
     {
         "group_id": 1,
         "group_name": "intui",
         "id": 3,
-        "name": "Dropbox",
-        "url": "https://www.dropbox.com/",
-        "image": "https://www.google.com/s2/favicons?domain=www.dropbox.com"
+        "name": "ChatGPT",
+        "url": "https://chatgpt.com/"
     },
     {
         "group_id": 2,
         "group_name": "social",
-        "id": 4,
-        "name": "Facebook",
-        "url": "https://www.facebook.com/",
-        "image": "https://www.google.com/s2/favicons?domain=www.facebook.com"
-    },
-    {
-        "group_id": 2,
-        "group_name": "social",
-        "id": 5,
+        "id": 1,
         "name": "Instagram",
-        "url": "https://www.instagram.com/",
-        "image": "https://www.google.com/s2/favicons?domain=www.instagram.com"
+        "url": "https://www.instagram.com/"
     },
     {
         "group_id": 2,
         "group_name": "social",
-        "id": 7,
-        "name": "Snapchat",
-        "url": "https://www.snapchat.com/",
-        "image": "https://www.google.com/s2/favicons?domain=www.snapchat.com"
+        "id": 2,
+        "name": "Facebook",
+        "url": "https://www.facebook.com/"
     },
     {
         "group_id": 3,
         "group_name": "media",
-        "id": 6,
+        "id": 1,
         "name": "Spotify",
-        "url": "https://open.spotify.com/",
-        "image": "https://www.google.com/s2/favicons?domain=open.spotify.com"
+        "url": "https://open.spotify.com/"
     },
     {
         "group_id": 3,
         "group_name": "media",
-        "id": 8,
+        "id": 2,
         "name": "YouTube",
-        "url": "https://www.youtube.com/",
-        "image": "https://www.google.com/s2/favicons?domain=www.youtube.com"
+        "url": "https://www.youtube.com/"
     },
     {
         "group_id": 3,
         "group_name": "media",
-        "id": 16,
+        "id": 3,
         "name": "X",
-        "url": "https://x.com/",
-        "image": "https://www.google.com/s2/favicons?domain=x.com"
+        "url": "https://x.com/"
     },
     {
         "group_id": 4,
         "group_name": "professional",
-        "id": 9,
-        "name": "LinkedIn",
-        "url": "https://www.linkedin.com/",
-        "image": "https://www.google.com/s2/favicons?domain=www.linkedin.com"
-    },
-    {
-        "group_id": 4,
-        "group_name": "professional",
-        "id": 10,
+        "id": 1,
         "name": "Naukri",
-        "url": "https://www.naukri.com/",
-        "image": "https://www.google.com/s2/favicons?domain=www.naukri.com"
+        "url": "https://www.naukri.com/"
     },
     {
         "group_id": 4,
         "group_name": "professional",
-        "id": 13,
+        "id": 2,
         "name": "PayPal",
-        "url": "https://www.paypal.com/in/home",
-        "image": "https://www.google.com/s2/favicons?domain=www.paypal.com"
+        "url": "https://www.paypal.com/in/home"
+    },
+    {
+        "group_id": 4,
+        "group_name": "professional",
+        "id": 3,
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/"
     },
     {
         "group_id": 5,
         "group_name": "shopping",
-        "id": 14,
-        "name": "Walmart",
-        "url": "https://www.walmart.com/",
-        "image": "https://www.google.com/s2/favicons?domain=www.walmart.com"
-    },
-    {
-        "group_id": 5,
-        "group_name": "shopping",
-        "id": 15,
+        "id": 1,
         "name": "Pinterest",
-        "url": "https://in.pinterest.com/",
-        "image": "https://www.google.com/s2/favicons?domain=in.pinterest.com"
+        "url": "https://in.pinterest.com/"
+    },
+    {
+        "group_id": 5,
+        "group_name": "shopping",
+        "id": 2,
+        "name": "Walmart",
+        "url": "https://www.walmart.com/"
     }
 ]

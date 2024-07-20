@@ -1,108 +1,165 @@
- // Fetch data from list.json
- async function fetchApps() {
-    try {
-        const response = await fetch('http://127.0.0.1:5500/list.json');
-        // Check if the response is OK (status in the range 200-299)
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-        // Parse the JSON data
-        const data = await response.json();
-        // Process the JSON data
-        const apps = data.map(item => ({
-            groupid: item.group_id, 
-            group_name:item.group_name,
-            id: item.id,
-            name: item.name,
-            url: item.url,
-            image: item.image
-        }));
-        
-        // Return the resulting array
-        return apps;
-    } catch (error) {
-        // Handle any errors that occurred during the fetch
-        console.error('There was a problem with the fetch operation:', error);
-        return []; // Return an empty array in case of an error
-    }
-}
-
-
 const appGrid = document.getElementById('appGrid');
 const searchInput = document.getElementById('search');
 const showAddAppFormButton = document.getElementById('showAddAppForm');
 const addAppForm = document.getElementById('addAppForm');
 const appForm = document.getElementById('appForm');
 const overlay = document.getElementById('overlay');
+const appGroup = document.getElementById('appGroup');
+const newGroupName = document.getElementById('newGroupName');
+const newGroupNameContainer = document.getElementById('newGroupNameContainer');
+const saveButton = document.getElementById('saveButton');
+const saveChangesButton = document.getElementById('saveChangesButton');
 
-let draggedElementIndex;
+let draggedElement;
+let draggedElementGroup;
+let apps = [];
+let groups = {};
+let groupHighestId = {}; // To store the highest ID for each group
 
-const renderApps = (appsToRender) => {
-
-    fetchApps().then(a => {
-        console.log(a); // Logs the apps array to the console
-        apps=a
-
+const renderApps = (appsToRender = []) => {
     appGrid.innerHTML = '';
-    apps.forEach((app, index) => {
-        
-        const appElement = document.createElement('div');
-        appElement.className = 'app';
-        appElement.setAttribute('draggable', 'true');
-        appElement.setAttribute('data-index', index);
-        appElement.innerHTML = `
-            <div onclick="window.open('${app.url}', '_blank')" style="cursor: pointer;">
-                <img src="${app.image}" alt="${app.name}">
-                <div>${app.name}</div>
-            </div>
-            <div class="options" onclick="toggleOptions(event)">
-                ⋮
-                <ul class="hidden">
-                    <li onclick="editApp(${app.id})">Edit</li>
-                    <li onclick="deleteApp(${app.id})">Delete</li>
-                </ul>
-            </div>
+
+    const groupedApps = appsToRender.reduce((groups, app) => {
+        if (!groups[app.groupid]) {
+            groups[app.groupid] = {
+                group_name: app.group_name,
+                apps: []
+            };
+        }
+        groups[app.groupid].apps.push(app);
+        return groups;
+    }, {});
+
+    for (const groupId in groupedApps) {
+        const group = groupedApps[groupId];
+        const groupElement = document.createElement('div');
+        groupElement.className = 'group';
+        groupElement.dataset.groupid = groupId;
+        groupElement.innerHTML = `
+            <div class="group-title">${group.group_name}</div>
+            <div class="apps"></div>
         `;
-        appElement.addEventListener('dragstart', handleDragStart);
-        appElement.addEventListener('dragover', handleDragOver);
-        appElement.addEventListener('drop', handleDrop);
-        appElement.addEventListener('dragend', handleDragEnd);
-        appGrid.appendChild(appElement);
-});
-});
+        const appsContainer = groupElement.querySelector('.apps');
+
+        group.apps.forEach((app, index) => {
+            const appElement = document.createElement('div');
+            appElement.className = 'app';
+            appElement.setAttribute('draggable', 'true');
+            appElement.setAttribute('data-index', index);
+            appElement.innerHTML = `
+                <div onclick="window.open('${app.url}', '_blank')" style="cursor: pointer;">
+                    <img src="https://www.google.com/s2/favicons?domain=${app.url}" alt="${app.name}">
+                    <div>${app.name}</div>
+                </div>
+                <div class="options" onclick="toggleOptions(event)">
+                    ⋮
+                    <ul class="hidden">
+                        <li onclick="editApp('${app.groupid}', ${app.id})">Edit</li>
+                        <li onclick="deleteApp('${app.groupid}',${app.id})">Delete</li>
+                    </ul>
+                </div>
+            `;
+            appElement.addEventListener('dragstart', handleDragStart);
+            appElement.addEventListener('dragover', handleDragOver);
+            appElement.addEventListener('drop', handleDrop);
+            appElement.addEventListener('dragend', handleDragEnd);
+            appsContainer.appendChild(appElement);
+        });
+
+        appGrid.appendChild(groupElement);
+    }
 };
 
+const populateGroupOptions = () => {
+    appGroup.innerHTML = '<option value="no">Select Group</option><option value="new">New Group</option>';
+    for (const groupId in groups) {
+        const option = document.createElement('option');
+        option.value = groupId;
+        option.textContent = groups[groupId];
+        appGroup.appendChild(option);
+    }
+};
+
+const handleGroupChange = () => {
+    if (appGroup.value === 'new') {
+        newGroupNameContainer.style.display = 'block';
+        newGroupName.required = true;
+        saveButton.disabled = !newGroupName.value.trim();
+    } else if (appGroup.value === 'no') {
+        newGroupNameContainer.style.display = 'none';
+        newGroupName.required = false;
+        newGroupName.value = ''; // Clear the input value
+
+        saveButton.disabled = true; // Disable button when 'Select Group' is chosen
+    } else {
+        newGroupName.value = "";
+        newGroupNameContainer.style.display = 'none';
+        newGroupName.required = false;
+        saveButton.disabled = false; // You might want to adjust this based on other conditions
+    }
+};
+
+const handleNewGroupNameChange = () => {
+    if (appGroup.value === 'new') {
+        saveButton.disabled = !newGroupName.value.trim();
+    }
+};
+
+appGroup.addEventListener('change', handleGroupChange);
+newGroupName.addEventListener('input', handleNewGroupNameChange);
+
 const handleDragStart = (event) => {
-    draggedElementIndex = event.currentTarget.getAttribute('data-index');
-    event.currentTarget.classList.add('dragging');
+    draggedElement = event.currentTarget;
+    draggedElementGroup = draggedElement.closest('.group');
+    draggedElement.classList.add('dragging');
     event.dataTransfer.effectAllowed = 'move';
-    event.dataTransfer.setData('text/html', event.currentTarget.innerHTML);
+    event.dataTransfer.setData('text/html', draggedElement.innerHTML);
 };
 
 const handleDragOver = (event) => {
     event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
-    event.currentTarget.classList.add('over');
+    const targetElement = event.currentTarget;
+    const targetGroup = targetElement.closest('.group');
+
+    if (targetGroup === draggedElementGroup) {
+        event.dataTransfer.dropEffect = 'move';
+        targetElement.classList.add('over');
+    } else {
+        event.dataTransfer.dropEffect = 'none';
+    }
 };
 
 const handleDrop = (event) => {
     event.stopPropagation();
-    const targetElementIndex = event.currentTarget.getAttribute('data-index');
-    if (draggedElementIndex !== targetElementIndex) {
-        const temp = apps[draggedElementIndex];
-        apps[draggedElementIndex] = apps[targetElementIndex];
-        apps[targetElementIndex] = temp;
-        renderApps(apps);
+    const targetElement = event.currentTarget;
+    const targetGroup = targetElement.closest('.group');
+
+    if (targetGroup === draggedElementGroup && draggedElement !== targetElement) {
+        const targetIndex = Array.from(targetGroup.querySelectorAll('.app')).indexOf(targetElement);
+        const draggedIndex = Array.from(draggedElementGroup.querySelectorAll('.app')).indexOf(draggedElement);
+
+        if (draggedIndex !== targetIndex) {
+            const appsInGroup = apps.filter(app => app.groupid == draggedElementGroup.dataset.groupid);
+            const draggedApp = appsInGroup[draggedIndex];
+            const targetApp = appsInGroup[targetIndex];
+
+            // Swap the IDs of the dragged app and the target app
+            const tempId = draggedApp.id;
+            draggedApp.id = targetApp.id;
+            targetApp.id = tempId;
+
+            appsInGroup[draggedIndex] = targetApp;
+            appsInGroup[targetIndex] = draggedApp;
+
+            apps = apps.filter(app => app.groupid != draggedElementGroup.dataset.groupid).concat(appsInGroup);
+            renderApps(apps);
+        }
     }
-    event.currentTarget.classList.remove('over');
 };
 
-const handleDragEnd = () => {
-    const draggingElement = document.querySelector('.dragging');
-    if (draggingElement) {
-        draggingElement.classList.remove('dragging');
-    }
-    draggedElementIndex = null;
+const handleDragEnd = (event) => {
+    draggedElement.classList.remove('dragging');
+    document.querySelectorAll('.app').forEach(app => app.classList.remove('over'));
 };
 
 const filterApps = () => {
@@ -118,8 +175,12 @@ const toggleOptions = (event) => {
 };
 
 const showAddAppForm = () => {
+    appForm.reset();
+    appGroup.innerHTML = '';
+    populateGroupOptions();
     addAppForm.style.display = 'block';
     overlay.style.display = 'block';
+    handleGroupChange(); // Ensure the correct state of the new group input when the form is shown
 };
 
 const hideAddAppForm = () => {
@@ -132,44 +193,149 @@ const saveApp = (event) => {
     const appId = document.getElementById('appId').value;
     const appName = document.getElementById('appName').value;
     const appURL = document.getElementById('appURL').value;
-    if (appId) {
-        const appIndex = apps.findIndex(app => app.id == appId);
-        apps[appIndex] = { id: parseInt(appId), name: appName, url: appURL, image: `https://www.google.com/s2/favicons?domain=${appURL}` };
+    const appGroupValue = appGroup.value;
+    let groupId;
+    let groupName;
+
+    if (appGroupValue === 'new') {
+        groupId = new Date().getTime(); // Ensure groupId is a number
+        groupName = newGroupName.value;
+        groups[groupId] = groupName;
+        groupHighestId[groupId] = 0; // Initialize the highest ID for the new group
     } else {
-        const newApp = {
-            id: apps.length ? Math.max(...apps.map(app => app.id)) + 1 : 1,
-            name: appName,
-            url: appURL,
-            image: `https://www.google.com/s2/favicons?domain=${appURL}`
-        };
-        apps.push(newApp);
+        groupId = Number(appGroupValue); // Ensure groupId is a number
+        groupName = groups[groupId];
     }
+
+    let newId;
+    if (appId) {
+        newId = parseInt(appId);
+    } else {
+        // Increment the highest ID for the group
+        groupHighestId[groupId] = (groupHighestId[groupId] || 0) + 1;
+        newId = groupHighestId[groupId];
+    }
+
+    const app = {
+        id: newId,
+        name: appName,
+        url: appURL,
+        groupid: groupId,
+        group_name: groupName
+    };
+
+    if (appId) {
+        const index = apps.findIndex(a => a.id === parseInt(appId));
+        apps[index] = app;
+    } else {
+        apps.push(app);
+    }
+
     renderApps(apps);
     hideAddAppForm();
-    appForm.reset();
 };
 
-const editApp = (id) => {
-    const app = apps.find(app => app.id === id);
+
+const editApp = (groupid, appId) => {
+    const app = apps.find(a => a.id === appId);
     document.getElementById('appId').value = app.id;
     document.getElementById('appName').value = app.name;
     document.getElementById('appURL').value = app.url;
+    appGroup.innerHTML = '';
+    populateGroupOptions();
+    appGroup.value = app.groupid;
     showAddAppForm();
 };
 
-const deleteApp = (id) => {
-    const appIndex = apps.findIndex(app => app.id === id);
-    apps.splice(appIndex, 1);
+const deleteApp = (groupId, appId) => {
+    const numericGroupId = Number(groupId); // Ensure groupId is a number
+    const numericAppId = Number(appId);     // Ensure appId is a number
+    
+    apps = apps.filter(app => app.groupid !== numericGroupId || app.id !== numericAppId);
     renderApps(apps);
 };
 
-document.addEventListener('click', () => {
-    document.querySelectorAll('.options ul').forEach(ul => ul.classList.add('hidden'));
-});
 
-overlay.addEventListener('click', hideAddAppForm);
+const saveChanges = () => {
+    const groupedData = apps.reduce((acc, app) => {
+        const group_id = parseInt(app.groupid);
+        if (!acc[group_id]) {
+            acc[group_id] = [];
+        }
+        acc[group_id].push({
+            group_id,
+            group_name: app.group_name,
+            id: app.id,
+            name: app.name,
+            url: app.url
+        });
+        return acc;
+    }, {});
+
+    const updatedData = Object.values(groupedData).flatMap(group => {
+        group.sort((a, b) => a.id - b.id);
+        return group.map((item, index) => ({
+            ...item,
+            id: index + 1
+        }));
+    });
+
+    console.log(updatedData);
+    fetch('http://127.0.0.1:5000/api/update', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+};
+
+saveChangesButton.addEventListener('click', saveChanges);
 showAddAppFormButton.addEventListener('click', showAddAppForm);
-appForm.addEventListener('submit', saveApp);
+overlay.addEventListener('click', hideAddAppForm);
 searchInput.addEventListener('input', filterApps);
+appForm.addEventListener('submit', saveApp);
 
-renderApps( );
+const fetchApps = async () => {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/api/get_data');
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        console.log('Fetched data:', data);
+        apps = data.map(item => ({
+            groupid: item.group_id,
+            group_name: item.group_name,
+            id: item.id,
+            name: item.name,
+            url: item.url,
+            image: `https://www.google.com/s2/favicons?domain=${item.url}`
+        }));
+        groups = apps.reduce((acc, app) => {
+            if (!acc[app.groupid]) {
+                acc[app.groupid] = app.group_name;
+            }
+            return acc;
+        }, {});
+        groupHighestId = apps.reduce((acc, app) => {
+            if (!acc[app.groupid] || acc[app.groupid] < app.id) {
+                acc[app.groupid] = app.id;
+            }
+            return acc;
+        }, {});
+        renderApps(apps);
+        populateGroupOptions();
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+};
+
+fetchApps();

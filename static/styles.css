@@ -43,46 +43,57 @@ body {
 
 .container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    width: 1000px;
-    grid-column: 2.8 / 3;  
+    flex-direction: column;
+    width: 100%;
+    grid-column: 2.8 / 3;
 }
 
+.group {
+    margin-bottom: 30px;
+}
+
+.group-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+
+    text-align:left;
+}
+
+.apps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
 .app {
-    margin: 15px; 
+    margin: 15px;
+    /* justify-content:left; */
     text-align: center;
+
     position: relative;
-    width: 300px;
+    width: calc((100% / 6) - 30px); /* 100% / 6 to fit 6 items per row */
     height: 100px;
-    flex: 1 0 calc(16.6667% - 30px);
+    flex: 1 0 calc((100% / 6) - 30px);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     cursor: move; /* Indicate draggable items */
 }
-
-.app:hover {
-    background-color: #3a4a61;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-}
-
 .app img {
-    margin-top: 15px;
-    margin-bottom: 5px;
+    margin-top: 15px; 
+    margin-bottom: 10px;
+    align-items: left;
     height: 30px;
     transition: transform 0.3s ease-out;
-}
+} 
 .app img:hover {
-    transform: scale(1.8); /* Adjust the scale factor as needed */
+    transform: scale(1.8);
 }
- 
 
 .app.dragging {
     opacity: 0.5;
 }
-.app.over {
-    border: 2px outset     #fff;
-}
 
+    /* .app.over {
+        border: 2px outset #fff;
+    } */
 
 .options {
     position: relative;
@@ -90,20 +101,17 @@ body {
     cursor: pointer;
     bottom: 50px;
     left: 50px;
+    width: 20px; /* Increase width */
+    height: 20px; /* Increase height */
+    border-radius: 5px; /* Make it oval */
+
 }
 
-.options button {
-    background: none;
-    border: none;
-    font-size: 18px;
-    line-height: 1;
-    color: #fff;
-}
+.options:hover{
+background: #058692;
+/* border: 1px solid #ccc; */
 
-.options button:hover {
-    color: #9ec2d9;
 }
-
 .options ul {
     position: absolute;
     top: 100%;
@@ -113,8 +121,8 @@ body {
     list-style-type: none;
     padding: 5px 0;
     border-radius: 5px;
-    display: none; 
-    z-index: 2;  
+    display: none;
+    z-index: 2;
 }
 
 .options ul li {
@@ -132,7 +140,7 @@ body {
 }
 
 .options.open ul {
-    display: block; 
+    display: block;
 }
 
 .hidden {

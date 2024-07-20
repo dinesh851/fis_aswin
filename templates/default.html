@@ -11,8 +11,8 @@
         <span>FIS ADMIN PANEL</span>
         <input type="text" id="search" placeholder="Search">
         <button id="showAddAppForm">Add App</button>
-        <button>save changes        </button>
-              </div>
+        <button id="saveChangesButton">Save Changes</button>
+    </div>
 
     <div class="wrapper">
         <div class="left"></div>
@@ -24,11 +24,23 @@
     <div id="addAppForm">
         <form id="appForm">
             <input type="hidden" id="appId">
-            <input type="text" id="appName" placeholder="App Name" required>
-            <input type="url" id="appURL" placeholder="App URL" required>
-            <button type="submit">Save App</button>
+            <label for="appName">App Name:</label>
+            <input type="text" id="appName" required>
+            <label for="appURL">App URL:</label>
+            <input type="url" id="appURL" required>
+            <label for="appGroup">Group:</label>
+            <select id="appGroup">
+        
+                <!-- Options will be dynamically populated -->
+            </select>
+            <div id="newGroupNameContainer" style="display: none;">
+                <label for="newGroupName">New Group Name:</label>
+                <input type="text" id="newGroupName">
+            </div>
+            <button type="submit" id="saveButton" disabled>Save</button>
         </form>
-    </div>
+        
+    </div>  
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
