@@ -14,8 +14,7 @@ let draggedElement;
 let draggedElementGroup;
 let apps = [];
 let groups = {};
-let groupHighestId = {}; // To store the highest ID for each group
-
+let groupHighestId = {};  
 const renderApps = (appsToRender = []) => {
     appGrid.innerHTML = '';
 
@@ -88,14 +87,14 @@ const handleGroupChange = () => {
     } else if (appGroup.value === 'no') {
         newGroupNameContainer.style.display = 'none';
         newGroupName.required = false;
-        newGroupName.value = ''; // Clear the input value
+        newGroupName.value = '';  
 
-        saveButton.disabled = true; // Disable button when 'Select Group' is chosen
+        saveButton.disabled = true; 
     } else {
         newGroupName.value = "";
         newGroupNameContainer.style.display = 'none';
         newGroupName.required = false;
-        saveButton.disabled = false; // You might want to adjust this based on other conditions
+        saveButton.disabled = false; 
     }
 };
 
@@ -143,7 +142,6 @@ const handleDrop = (event) => {
             const draggedApp = appsInGroup[draggedIndex];
             const targetApp = appsInGroup[targetIndex];
 
-            // Swap the IDs of the dragged app and the target app
             const tempId = draggedApp.id;
             draggedApp.id = targetApp.id;
             targetApp.id = tempId;
@@ -180,7 +178,7 @@ const showAddAppForm = () => {
     populateGroupOptions();
     addAppForm.style.display = 'block';
     overlay.style.display = 'block';
-    handleGroupChange(); // Ensure the correct state of the new group input when the form is shown
+    handleGroupChange();  
 };
 
 const hideAddAppForm = () => {
@@ -198,12 +196,12 @@ const saveApp = (event) => {
     let groupName;
 
     if (appGroupValue === 'new') {
-        groupId = new Date().getTime(); // Ensure groupId is a number
+        groupId = new Date().getTime(); 
         groupName = newGroupName.value;
         groups[groupId] = groupName;
-        groupHighestId[groupId] = 0; // Initialize the highest ID for the new group
+        groupHighestId[groupId] = 0;  
     } else {
-        groupId = Number(appGroupValue); // Ensure groupId is a number
+        groupId = Number(appGroupValue);  
         groupName = groups[groupId];
     }
 
@@ -211,7 +209,6 @@ const saveApp = (event) => {
     if (appId) {
         newId = parseInt(appId);
     } else {
-        // Increment the highest ID for the group
         groupHighestId[groupId] = (groupHighestId[groupId] || 0) + 1;
         newId = groupHighestId[groupId];
     }
@@ -248,8 +245,8 @@ const editApp = (groupid, appId) => {
 };
 
 const deleteApp = (groupId, appId) => {
-    const numericGroupId = Number(groupId); // Ensure groupId is a number
-    const numericAppId = Number(appId);     // Ensure appId is a number
+    const numericGroupId = Number(groupId); 
+    const numericAppId = Number(appId);     
     
     apps = apps.filter(app => app.groupid !== numericGroupId || app.id !== numericAppId);
     renderApps(apps);

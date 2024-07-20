@@ -66,15 +66,14 @@ body {
 }
 .app {
     margin: 15px;
-    /* justify-content:left; */
     text-align: center;
 
     position: relative;
-    width: calc((100% / 6) - 30px); /* 100% / 6 to fit 6 items per row */
+    width: calc((100% / 6) - 30px); 
     height: 100px;
     flex: 1 0 calc((100% / 6) - 30px);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: move; /* Indicate draggable items */
+    cursor: move;  
 }
 .app img {
     margin-top: 15px; 
@@ -91,9 +90,6 @@ body {
     opacity: 0.5;
 }
 
-    /* .app.over {
-        border: 2px outset #fff;
-    } */
 
 .options {
     position: relative;
@@ -101,15 +97,14 @@ body {
     cursor: pointer;
     bottom: 50px;
     left: 50px;
-    width: 20px; /* Increase width */
-    height: 20px; /* Increase height */
-    border-radius: 5px; /* Make it oval */
+    width: 20px;  
+    height: 20px;  
+    border-radius: 5px;  
 
 }
 
 .options:hover{
 background: #058692;
-/* border: 1px solid #ccc; */
 
 }
 .options ul {

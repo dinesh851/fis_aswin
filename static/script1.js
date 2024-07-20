@@ -6,8 +6,7 @@ const newGroupNameContainer = document.getElementById('newGroupNameContainer');
  
 let apps = [];
 let groups = {};
-let groupHighestId = {}; // To store the highest ID for each group
-
+let groupHighestId = {};  
 const renderApps = (appsToRender = []) => {
     console.log(appsToRender);
     appGrid.innerHTML = '';
@@ -100,7 +99,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             keySequence.shift();
         }
 
-        // Check if the sequence matches
         if (keySequence.join('') === correctSequence.join('')) {
             window.location.href = 'http://127.0.0.1:5000/admin';
         }
