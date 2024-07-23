@@ -19,7 +19,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         if username == USERNAME and password == PASSWORD:
-            return render_template('default.html')
+            return render_template('admin.html')
         else:
             flash('Invalid username or password!')
             return redirect(url_for('login'))
@@ -27,7 +27,7 @@ def login():
 
 @app.route('/admin')
 def default():
-    return render_template('default.html')
+    return render_template('admin.html')
 
 @app.route('/api/update', methods=['POST'])
 def update_data():

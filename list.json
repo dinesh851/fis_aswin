@@ -1,93 +1,289 @@
 [
     {
         "group_id": 1,
-        "group_name": "intui",
+        "group_name": "FIS",
         "id": 1,
-        "name": "Dropbox",
-        "url": "https://www.dropbox.com/"
+        "name": "Planview Portal",
+        "url": "https://fisglobal.pvcloud.com/planview/Track/Time/"
     },
     {
         "group_id": 1,
-        "group_name": "intui",
+        "group_name": "FIS",
         "id": 2,
-        "name": "tradingapp",
-        "url": "https://github.com/NamachiS007/Webappdemo/blob/main/WebApplication.html"
+        "name": "MyApps",
+        "url": "https://myapps.microsoft.com"
     },
     {
         "group_id": 1,
-        "group_name": "intui",
+        "group_name": "FIS",
         "id": 3,
-        "name": "ChatGPT",
-        "url": "https://chatgpt.com/"
+        "name": "FNFIS",
+        "url": "https://ssp.fnfis.com/login"
+    },
+    {
+        "group_id": 1,
+        "group_name": "FIS",
+        "id": 4,
+        "name": "Workday portal",
+        "url": "https://home.myworkday.com"
+    },
+    {
+        "group_id": 1,
+        "group_name": "FIS",
+        "id": 5,
+        "name": "WeLearn Portal",
+        "url": "https://learning.sabacloud.com"
+    },
+    {
+        "group_id": 1,
+        "group_name": "FIS",
+        "id": 6,
+        "name": "Health Insurance Portal",
+        "url": "https://vidalhealthtpa.com"
+    },
+    {
+        "group_id": 1,
+        "group_name": "FIS",
+        "id": 7,
+        "name": "FIS Career page",
+        "url": "https://careers.fisglobal.com"
     },
     {
         "group_id": 2,
-        "group_name": "social",
+        "group_name": "Ticketing",
         "id": 1,
-        "name": "Instagram",
-        "url": "https://www.instagram.com/"
+        "name": "Dash Request",
+        "url": "https://dash.fisglobal.com/Request/Default.aspx"
     },
     {
         "group_id": 2,
-        "group_name": "social",
+        "group_name": "Ticketing",
         "id": 2,
-        "name": "Facebook",
-        "url": "https://www.facebook.com/"
+        "name": "Service Request",
+        "url": "https://atyourserviceportal.service-now.com/supportall"
     },
     {
-        "group_id": 3,
-        "group_name": "media",
-        "id": 1,
-        "name": "Spotify",
-        "url": "https://open.spotify.com/"
-    },
-    {
-        "group_id": 3,
-        "group_name": "media",
-        "id": 2,
-        "name": "YouTube",
-        "url": "https://www.youtube.com/"
-    },
-    {
-        "group_id": 3,
-        "group_name": "media",
+        "group_id": 2,
+        "group_name": "Ticketing",
         "id": 3,
-        "name": "X",
-        "url": "https://x.com/"
+        "name": "Jira",
+        "url": "https://jira.fis.dev/login.jsp?"
     },
     {
-        "group_id": 4,
-        "group_name": "professional",
+        "group_id": 2,
+        "group_name": "Ticketing",
+        "id": 4,
+        "name": "ServiceNow",
+        "url": "https://atyourserviceportal.service-now.com/now/nav/ui/classic/params/target/welcomePage.do"
+    },
+    {
+        "group_id": 2,
+        "group_name": "Ticketing",
+        "id": 5,
+        "name": "Wso2 Vendor Ticket Request",
+        "url": "https://support.wso2.com/support"
+    },
+    {
+        "group_id": 2,
+        "group_name": "Ticketing",
+        "id": 6,
+        "name": "VFP Request Portal",
+        "url": "https://rmis.fnfis.com"
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
         "id": 1,
-        "name": "Naukri",
-        "url": "https://www.naukri.com/"
+        "name": "Wiki Page",
+        "url": "https://wiki.fnis.com/pages/viewpage.action?"
     },
     {
-        "group_id": 4,
-        "group_name": "professional",
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
         "id": 2,
-        "name": "PayPal",
-        "url": "https://www.paypal.com/in/home"
+        "name": "Azure Portal",
+        "url": "https://portal.azure.com/#home"
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
+        "id": 3,
+        "name": "Dynatrace Login",
+        "url": "https://zpl24448.live.dynatrace.com/ui/dashboards?gf=all"
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
+        "id": 4,
+        "name": "Splunk Login",
+        "url": "https://splunk.fnfis.com/en-US/account/login?"
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
+        "id": 5,
+        "name": "Keyfactor Login",
+        "url": "https://fis.keyfactorpki.com/Keyfactor/Portal"
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
+        "id": 6,
+        "name": "ServiceNow IST_SaaS Dashboard",
+        "url": "https://atyourserviceportal.service-now.com/$pa_dashboards_overview.do"
     },
     {
         "group_id": 4,
-        "group_name": "professional",
+        "group_name": "ISTGUI",
+        "id": 1,
+        "name": "Chevron Prod IST GUI West",
+        "url": "https://10.18.93.163/IST-Switch/"
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 2,
+        "name": "Paypal Prod IST GUI South East",
+        "url": "https://10.18.66.163/IST-Switch/"
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
         "id": 3,
-        "name": "LinkedIn",
-        "url": "https://www.linkedin.com/"
+        "name": "Paypal Prod IST GUI East",
+        "url": "https://10.18.66.35/IST-Switch/"
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 4,
+        "name": "Intuit Prod IST GUI East",
+        "url": "https://10.18.103.35/IST-Switch/login.jsp"
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 5,
+        "name": "Intuit Prod IST GUI West",
+        "url": "https://10.18.102.35/IST-Switch/login.jsp"
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 6,
+        "name": "Mastercard Prod IST GUI East",
+        "url": "https://prodgui/IST-Switch/login.jsp"
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 7,
+        "name": "Mastercard Prod IST GUI West",
+        "url": "https://prod2gui/IST-Switch/"
     },
     {
         "group_id": 5,
-        "group_name": "shopping",
+        "group_name": "CrushFTP",
         "id": 1,
-        "name": "Pinterest",
-        "url": "https://in.pinterest.com/"
+        "name": "Paypal East",
+        "url": "http://10.18.66.22:8080/WebInterface/login.html"
     },
     {
         "group_id": 5,
-        "group_name": "shopping",
+        "group_name": "CrushFTP",
         "id": 2,
-        "name": "Walmart",
-        "url": "https://www.walmart.com/"
+        "name": "Paypal Southeast",
+        "url": "http://10.18.66.150:8080/WebInterface/login.html"
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 3,
+        "name": "Intuit East",
+        "url": "http://10.18.103.22:8080/WebInterface/login.html"
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 4,
+        "name": "Intuit West",
+        "url": "http://10.18.102.22:8080/WebInterface/login.html"
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 5,
+        "name": "Chevron East",
+        "url": "http://10.18.94.150:8080/WebInterface/login.html"
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 6,
+        "name": "Chevron West",
+        "url": "http://10.18.93.150:8080/WebInterface/login.html"
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 7,
+        "name": "CrushFTP Admin",
+        "url": "http://10.95.135.200:8080/WebInterface/login.html?link=/WebInterface/admin/index.html"
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 1,
+        "name": "Shift Roster",
+        "url": "https://sharepoint.com/ISTSaaSTeam_ShiftRoster_2024.xlsx"
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 2,
+        "name": "Certificate Passwords",
+        "url": "https://sharepoint.com/TLS_Certificate_passwords.xlsx"
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 3,
+        "name": "DB Passwords",
+        "url": "https://sharepoint.com/DB_passwords_New_2023_All_Clients.xlsx"
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 4,
+        "name": "Server List",
+        "url": "https://sharepoint.com/ISTSAASSUPPORTTEAM_server_list.xlsx"
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 5,
+        "name": "Certificate Details",
+        "url": "https://sharepoint.com/Certificate_Inventory_Chevron_Intuit_MC.xlsx"
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 6,
+        "name": "NETXMS New VM\u00e2\u20ac\u2122s",
+        "url": "https://sharepoint.com/IST_Switch_SaaS_Netxms_new_VM_details.txt"
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 7,
+        "name": "Recurring Issue Tracker",
+        "url": "https://sharepoint.com/IST_SaaS_Recurring_Issue.xlsx"
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 8,
+        "name": "Weekly Update Tracker",
+        "url": "https://sharepoint.com/Weekly_updates.xlsx"
     }
 ]
