@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify ,  send_from_directory
 import json
 from flask_cors import CORS
 
@@ -12,6 +12,12 @@ PASSWORD = 'password'
 @app.route('/')
 def home():
     return render_template('index.html')
+
+
+@app.route('/icons/<filename>')
+def serve_icon(filename):
+    return send_from_directory('static/icons', filename)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

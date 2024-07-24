@@ -9,6 +9,9 @@ const newGroupName = document.getElementById('newGroupName');
 const newGroupNameContainer = document.getElementById('newGroupNameContainer');
 const saveButton = document.getElementById('saveButton');
 const saveChangesButton = document.getElementById('saveChangesButton');
+const folderPath = '/static/icons';  
+const defaulticon = 0
+
 
 let draggedElement;
 let draggedElementGroup;
@@ -47,7 +50,7 @@ const renderApps = (appsToRender = []) => {
             appElement.setAttribute('data-index', index);
             appElement.innerHTML = `
                 <div onclick="window.open('${app.url}', '_blank')" style="cursor: pointer;">
-                    <img src="https://www.google.com/s2/favicons?domain=${app.url}" alt="${app.name}">
+                    <img src="${app.image}"  alt="${app.name}">
                     <div>${app.name}</div>
                 </div>
                 <div class="options" onclick="toggleOptions(event)">
@@ -218,9 +221,11 @@ const saveApp = (event) => {
         name: appName,
         url: appURL,
         groupid: groupId,
-        group_name: groupName
+        group_name: groupName,
+        icon :0,
+        image:`${folderPath}/${defaulticon}.png`
     };
-
+    // console.log(app);
     if (appId) {
         const index = apps.findIndex(a => a.id === parseInt(appId));
         apps[index] = app;
@@ -254,6 +259,8 @@ const deleteApp = (groupId, appId) => {
 
 
 const saveChanges = () => {
+    // Change button text to "Saving"
+
     const groupedData = apps.reduce((acc, app) => {
         const group_id = parseInt(app.groupid);
         if (!acc[group_id]) {
@@ -264,7 +271,8 @@ const saveChanges = () => {
             group_name: app.group_name,
             id: app.id,
             name: app.name,
-            url: app.url
+            url: app.url,
+            icon: app.icon
         });
         return acc;
     }, {});
@@ -276,8 +284,8 @@ const saveChanges = () => {
             id: index + 1
         }));
     });
-
     console.log(updatedData);
+
     fetch('http://127.0.0.1:5000/api/update', {
         method: 'POST',
         headers: {
@@ -288,11 +296,23 @@ const saveChanges = () => {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
+        saveChangesButton.innerText = 'Saving';
+        setTimeout(() => {
+            saveChangesButton.innerText = 'Saved';
+        }, 1000);
+        setTimeout(() => {
+            saveChangesButton.innerText = 'Save Changes';
+        }, 4000); 
     })
     .catch((error) => {
         console.error('Error:', error);
+        saveChangesButton.innerText = 'Error try again';
+        setTimeout(() => {
+            saveChangesButton.innerText = 'Save Changes';
+        }, 2000);  
     });
 };
+
 
 saveChangesButton.addEventListener('click', saveChanges);
 showAddAppFormButton.addEventListener('click', showAddAppForm);
@@ -314,7 +334,8 @@ const fetchApps = async () => {
             id: item.id,
             name: item.name,
             url: item.url,
-            image: `https://www.google.com/s2/favicons?domain=${item.url}`
+            icon:item.icon,
+            image: `${folderPath}/${item.icon}.png`
         }));
         groups = apps.reduce((acc, app) => {
             if (!acc[app.groupid]) {
@@ -334,5 +355,10 @@ const fetchApps = async () => {
         console.error('There was a problem with the fetch operation:', error);
     }
 };
+const logoutButton = document.getElementById('logout');
+    
+logoutButton.addEventListener('click', () => {
+    window.location.href = 'http://127.0.0.1:5000/';
+});
 
 fetchApps();

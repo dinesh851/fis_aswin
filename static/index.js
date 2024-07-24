@@ -2,7 +2,7 @@ const appGrid = document.getElementById('appGrid');
 const searchInput = document.getElementById('search');
 const newGroupName = document.getElementById('newGroupName');
 const newGroupNameContainer = document.getElementById('newGroupNameContainer');
-
+const folderPath = '/static/icons';  
  
 let apps = [];
 let groups = {};
@@ -48,7 +48,15 @@ const renderApps = (appsToRender = []) => {
         appGrid.appendChild(groupElement);
     }
 };
+const filterApps = () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredApps = apps.filter(app => app.name.toLowerCase().includes(searchTerm));
+    console.log(apps);
+    console.log(searchTerm);
+    console.log(filteredApps);
 
+    renderApps(filteredApps);
+};
 function redirectToAdmin() {
     window.location.href = 'http://localhost:5000/login';
 }
@@ -61,13 +69,13 @@ const fetchApps = async () => {
         }
         const data = await response.json();
         console.log('Fetched data:', data);
-        apps = data.map(item => ({
+          apps = data.map(item => ({
             groupid: item.group_id,
             group_name: item.group_name,
             id: item.id,
             name: item.name,
             url: item.url,
-            image: `https://www.google.com/s2/favicons?domain=${item.url}`
+            image: `${folderPath}/${item.icon}.png`
         }));
         groups = apps.reduce((acc, app) => {
             if (!acc[app.groupid]) {
@@ -86,6 +94,7 @@ const fetchApps = async () => {
         console.error('There was a problem with the fetch operation:', error);
     }
 };
+searchInput.addEventListener('input', filterApps);
 
 fetchApps();
 document.addEventListener('DOMContentLoaded', (event) => {
