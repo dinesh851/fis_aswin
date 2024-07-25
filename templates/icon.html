@@ -3,23 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Icons</title>
+    <title>Icons and Editable Tables</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
-            margin: 0;
-            font-family: Arial, sans-serif;
         }
         .container {
-            width: 50%;
+            width: 48%;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
         }
-        .images, .json-data {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin: 10px;
-            overflow-y: auto;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h2 {
+            margin: 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .table-container {
+            margin-bottom: 5px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 5px;
+        }
+        th, td {
+            padding: 2px;
+            text-align: left;
+        }
+        th {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+        }
+        td {
+            background-color: #f8f9fa;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
         }
         .image-list {
             display: flex;
@@ -33,93 +81,71 @@
             text-align: center;
         }
         .image-item img {
-            width: 100px; 
-            height: 100px;  
-            object-fit: cover; 
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
             display: block;
-            margin: 0 auto;  
+            margin: 0 auto;
         }
         .image-item p {
-            margin: 5px 0 0; 
-        }
-        .json-data {
-            position: relative;
+            margin: 5px 0 0;
         }
         textarea {
             width: 100%;
-            height: 600px;
+            height: 400px;
             font-family: monospace;
-            margin-bottom: 10px;
             box-sizing: border-box;
+            margin-top: 10px;
         }
-        #save-container {
-            text-align: right;  
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 10px;  
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        
         .upload-container {
             margin-top: 20px;
         }
         .upload-container input[type="file"] {
             margin-bottom: 10px;
         }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        #tables-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            max-height:600px; /* Adjust this height as needed */
         }
     </style>
 </head>
 <body>
-    <div class="container images">
+    <div class="container">
         <div class="header">
             <h2>Icons</h2>
-            <button id="logout">logout</button>
+            <button id="logout">Logout</button>
         </div>
-
         <div class="upload-container">
             <h3>Upload New Icon</h3>
-
             <form id="upload-form" enctype="multipart/form-data">
                 <input type="file" id="icon-file" name="file" accept=".png" />
                 <button type="submit">Upload</button>
             </form>
         </div>
-
         <div id="image-list" class="image-list"></div>
     </div>
-    <div class="container json-data">
+    <div class="container">
         <div class="header">
-            <h2>JSON Data</h2>
+            <h2>Edit</h2>
             <button id="save-button">Save</button>
         </div>
-       
-        <textarea id="json-content"></textarea>
+        <div id="tables-container"></div>
+        <!-- <textarea id="json-content" readonly></textarea> -->
     </div>
-
     <script>
         async function fetchData() {
             try {
                 const jsonResponse = await fetch('http://localhost:5000/api/get_data');
                 const jsonData = await jsonResponse.json();
-                document.getElementById('json-content').textContent = JSON.stringify(jsonData, null, 2);
+                // document.getElementById('json-content').textContent = JSON.stringify(jsonData, null, 2);
+                populateTables(jsonData);
+
                 const imageList = document.getElementById('image-list');
                 const iconsResponse = await fetch('http://localhost:5000/api/get_icons');
                 const iconsData = await iconsResponse.json();
 
-                imageList.innerHTML = ''; 
+                imageList.innerHTML = '';
                 iconsData.forEach(item => {
                     const imageItem = document.createElement('div');
                     imageItem.className = 'image-item';
@@ -134,9 +160,65 @@
             }
         }
 
+        function createTable(item) {
+            const container = document.createElement('div');
+            container.classList.add('table-container');
+
+            const table = document.createElement('table');
+            const tbody = document.createElement('tbody');
+
+            Object.keys(item).forEach(key => {
+                const tr = document.createElement('tr');
+                const th = document.createElement('th');
+                const td = document.createElement('td');
+                const input = document.createElement('input');
+
+                th.textContent = key;
+                input.type = 'text';
+                input.value = item[key];
+                input.setAttribute('data-key', key);
+                td.appendChild(input);
+                tr.appendChild(th);
+                tr.appendChild(td);
+                tbody.appendChild(tr);
+            });
+
+            table.appendChild(tbody);
+            container.appendChild(table);
+            return container;
+        }
+
+        function populateTables(data) {
+            const container = document.getElementById('tables-container');
+            data.forEach(item => {
+                const table = createTable(item);
+                container.appendChild(table);
+            });
+        }
+
+        function getTableData() {
+            const containers = document.querySelectorAll('.table-container');
+            const data = [];
+
+            containers.forEach(container => {
+                const item = {};
+                const inputs = container.querySelectorAll('input');
+
+                inputs.forEach(input => {
+                    const key = input.getAttribute('data-key');
+                    item[key] = input.value;
+                });
+
+                data.push(item);
+            });
+
+            return data;
+        }
+
         async function saveData() {
             try {
-                const jsonData = JSON.parse(document.getElementById('json-content').value);
+                const jsonData = getTableData();
+                console.log(jsonData);
                 const response = await fetch('http://localhost:5000/api/save_data', {
                     method: 'POST',
                     headers: {
@@ -169,7 +251,6 @@
                 alert('Only PNG files are allowed.');
                 return;
             }
-
             if (file.size > 50 * 1024) {  
                 alert('File size exceeds 50KB.');
                 return;
@@ -194,7 +275,7 @@
                 const result = await response.json();
                 if (result.status === 'success') {
                     alert('Icon uploaded successfully');
-                    fetchData();  
+                    fetchData();
                 } else {
                     alert('Error uploading icon: ' + result.message);
                 }
@@ -206,12 +287,11 @@
 
         document.getElementById('save-button').addEventListener('click', saveData);
         document.getElementById('upload-form').addEventListener('submit', uploadImage);
-        const logoutButton = document.getElementById('logout');
-    
-        logoutButton.addEventListener('click', () => {
+        document.getElementById('logout').addEventListener('click', () => {
             window.location.href = 'http://127.0.0.1:5000/logout';
         });
-        fetchData();
+
+        document.addEventListener('DOMContentLoaded', fetchData);
     </script>
 </body>
 </html>
