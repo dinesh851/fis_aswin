@@ -3,17 +3,17 @@
         "group_id": 1,
         "group_name": "FIS",
         "id": 1,
-        "name": "Planview Portal",
-        "url": "https://fisglobal.pvcloud.com/planview/Track/Time/",
-        "icon": 21
+        "name": "WeLearn Portal",
+        "url": "https://fisglobal.sabacloud.com/Saba/Web_spf/NA10P1PRD002/app/dashboard",
+        "icon": 16
     },
     {
         "group_id": 1,
         "group_name": "FIS",
         "id": 2,
-        "name": "WeLearn Portal",
-        "url": "https://fisglobal.sabacloud.com/Saba/Web_spf/NA10P1PRD002/app/dashboard",
-        "icon": 16
+        "name": "Planview Portal",
+        "url": "https://fisglobal.pvcloud.com/planview/Track/Time/",
+        "icon": 21
     },
     {
         "group_id": 1,

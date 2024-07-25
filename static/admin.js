@@ -293,7 +293,16 @@ const saveChanges = () => {
         },
         body: JSON.stringify(updatedData)
     })
-    .then(response => response.json())
+    .then(response => {
+        if (response.status === 401) {  // Check if the status code is 401
+            window.location.href = '/login';  // Redirect to login page
+            throw new Error('Unauthorized - Redirecting to login.');
+        } else if (response.ok) {  // Check if the response status is in the range 200-299
+            return response.json();
+        } else {
+            throw new Error('Network response was not ok.');
+        }
+    })
     .then(data => {
         console.log('Success:', data);
         saveChangesButton.innerText = 'Saving';
@@ -311,6 +320,7 @@ const saveChanges = () => {
             saveChangesButton.innerText = 'Save Changes';
         }, 2000);  
     });
+    
 };
 
 
@@ -323,6 +333,7 @@ appForm.addEventListener('submit', saveApp);
 const fetchApps = async () => {
     try {
         const response = await fetch('http://127.0.0.1:5000/api/get_data');
+        
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
@@ -358,7 +369,11 @@ const fetchApps = async () => {
 const logoutButton = document.getElementById('logout');
     
 logoutButton.addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5000/';
+    window.location.href = 'http://127.0.0.1:5000/logout';
 });
-
+const addicons = document.getElementById('addicons');
+    
+addicons.addEventListener('click', () => {
+    window.location.href = 'http://127.0.0.1:5000/icon';
+});
 fetchApps();
