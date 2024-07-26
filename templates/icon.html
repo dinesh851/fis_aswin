@@ -207,14 +207,21 @@
 
                 inputs.forEach(input => {
                     const key = input.getAttribute('data-key');
-                    item[key] = input.value;
+                    let value = input.value;
+                    
+                    if (['group_id', 'id', 'icon'].includes(key)) {
+                        value = parseInt(value, 10);
+                    }
+
+                    item[key] = value;
                 });
 
                 data.push(item);
             });
-
+            console.log(data);
             return data;
         }
+
         async function restoreBackup() {
             try {
                 const response = await fetch('http://127.0.0.1:5000/backup', {

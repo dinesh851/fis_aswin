@@ -259,17 +259,19 @@ const editApp = (groupid, appId) => {
 const deleteApp = (groupId, appId) => {
     const numericGroupId = Number(groupId); 
     const numericAppId = Number(appId);     
+ 
+    
     console.log(groupId,appId   );
+    console.log(apps);
     apps = apps.filter(app => app.groupid !== numericGroupId || app.id !== numericAppId);
+    console.log(apps);
     renderApps(apps);
 };
 
 
 const saveChanges = () => {
-    // Change button text to "Saving"
 
     const groupedData = apps.reduce((acc, app) => {
-        // console.log(apps);
         const group_id = parseInt(app.groupid);
         if (!acc[group_id]) {
             acc[group_id] = [];
@@ -302,10 +304,10 @@ const saveChanges = () => {
         body: JSON.stringify(updatedData)
     })
     .then(response => {
-        if (response.status === 401) {  // Check if the status code is 401
-            window.location.href = '/login';  // Redirect to login page
+        if (response.status === 401) {   
+            window.location.href = '/login';   
             throw new Error('Unauthorized - Redirecting to login.');
-        } else if (response.ok) {  // Check if the response status is in the range 200-299
+        } else if (response.ok) {   
             return response.json();
         } else {
             throw new Error('Network response was not ok.');
