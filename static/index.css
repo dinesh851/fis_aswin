@@ -1,13 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #2e3b4e;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
     margin: 0;
     padding: 0;
 }
 
 .navbar {
-    background-color: #0e1316;
+    background-color: #4bcd3e;
     height: 60px;
     display: flex;
     align-items: center;

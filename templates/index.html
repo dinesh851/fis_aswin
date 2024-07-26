@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="navbar">
-        <span>FIS </span>
+        <img src="{{ url_for('static', filename='fis.png') }}" alt="icon" style="width: 100px; height: 50px;"onclick="refreshPage()">
         <input type="text" id="search" placeholder="Search">
         <button onclick="redirectToAdmin()">ADMIN</button>
     </div>

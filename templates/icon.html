@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Icons and Editable Tables</title>
+    <title>Icons Edit</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -114,7 +114,7 @@
     <div class="container">
         <div class="header">
             <h2>Icons</h2>
-            <button id="logout">Logout</button>
+            <button id="Admin">Admin</button>
         </div>
         <div class="upload-container">
             <h3>Upload New Icon</h3>
@@ -287,8 +287,8 @@
 
         document.getElementById('save-button').addEventListener('click', saveData);
         document.getElementById('upload-form').addEventListener('submit', uploadImage);
-        document.getElementById('logout').addEventListener('click', () => {
-            window.location.href = 'http://127.0.0.1:5000/logout';
+        document.getElementById('Admin').addEventListener('click', () => {
+            window.location.href = 'http://127.0.0.1:5000/admin';
         });
 
         document.addEventListener('DOMContentLoaded', fetchData);

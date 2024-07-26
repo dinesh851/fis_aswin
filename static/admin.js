@@ -240,9 +240,16 @@ const saveApp = (event) => {
 
 const editApp = (groupid, appId) => {
     const app = apps.find(a => a.id === appId);
+    document.getElementById('appName').innerHTML = app.name;
+    document.getElementById('appURL').innerHTML = app.url;
+    console.log(app);
+    console.log(app.name);
+    console.log(app.url);
     document.getElementById('appId').value = app.id;
     document.getElementById('appName').value = app.name;
     document.getElementById('appURL').value = app.url;
+
+
     appGroup.innerHTML = '';
     populateGroupOptions();
     appGroup.value = app.groupid;
@@ -372,7 +379,9 @@ logoutButton.addEventListener('click', () => {
     window.location.href = 'http://127.0.0.1:5000/logout';
 });
 const addicons = document.getElementById('addicons');
-    
+function refreshPage() {
+    location.reload();
+}
 addicons.addEventListener('click', () => {
     window.location.href = 'http://127.0.0.1:5000/icon';
 });

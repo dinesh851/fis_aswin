@@ -87,6 +87,10 @@ def icon():
         return redirect(url_for('login'))
     return render_template('icon.html')
 
+
+
+ 
+
 @app.route('/api/update', methods=['POST'])
 def update_data():
     try:
