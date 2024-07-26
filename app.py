@@ -1,11 +1,16 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, send_from_directory,make_response
 import json
 from flask_cors import CORS
 import os
 app = Flask(__name__)
 CORS(app)
 app.secret_key = 'your_secret_key'
+@app.after_request
+def after_request(response):
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    # response.cache_control.no_store = True
 
+    return response
 USERNAME = 'admin'
 PASSWORD = 'password'
 logged_in = False   
@@ -60,7 +65,8 @@ def login():
             print("logged_in : ",logged_in)
 
             print(f"Logged in: {logged_in}")
-            return render_template('admin.html')
+            return redirect(url_for('admin'))
+  
         else:
             flash('Invalid username or password!')
             return redirect(url_for('login'))
