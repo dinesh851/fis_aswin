@@ -139,6 +139,7 @@ const handleDrop = (event) => {
     if (targetGroup === draggedElementGroup && draggedElement !== targetElement) {
         const targetIndex = Array.from(targetGroup.querySelectorAll('.app')).indexOf(targetElement);
         const draggedIndex = Array.from(draggedElementGroup.querySelectorAll('.app')).indexOf(draggedElement);
+        console.log(apps);
 
         if (draggedIndex !== targetIndex) {
             const appsInGroup = apps.filter(app => app.groupid == draggedElementGroup.dataset.groupid);
@@ -151,13 +152,12 @@ const handleDrop = (event) => {
 
             appsInGroup[draggedIndex] = targetApp;
             appsInGroup[targetIndex] = draggedApp;
-
             apps = apps.filter(app => app.groupid != draggedElementGroup.dataset.groupid).concat(appsInGroup);
             renderApps(apps);
         }
     }
 };
-
+    
 const handleDragEnd = (event) => {
     draggedElement.classList.remove('dragging');
     document.querySelectorAll('.app').forEach(app => app.classList.remove('over'));
@@ -259,7 +259,7 @@ const editApp = (groupid, appId) => {
 const deleteApp = (groupId, appId) => {
     const numericGroupId = Number(groupId); 
     const numericAppId = Number(appId);     
-    
+    console.log(groupId,appId   );
     apps = apps.filter(app => app.groupid !== numericGroupId || app.id !== numericAppId);
     renderApps(apps);
 };
@@ -269,6 +269,7 @@ const saveChanges = () => {
     // Change button text to "Saving"
 
     const groupedData = apps.reduce((acc, app) => {
+        // console.log(apps);
         const group_id = parseInt(app.groupid);
         if (!acc[group_id]) {
             acc[group_id] = [];

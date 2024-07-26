@@ -6,12 +6,12 @@ import shutil
 app = Flask(__name__)
 CORS(app)
 app.secret_key = 'your_secret_key'
-@app.after_request
-def after_request(response):
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    # response.cache_control.no_store = True
+# @app.after_request
+# def after_request(response):
+#     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+#     # response.cache_control.no_store = True
 
-    return response
+#     return response
 USERNAME = 'admin'
 PASSWORD = 'password'
 logged_in = False   
