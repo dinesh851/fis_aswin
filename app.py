@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 import json
 from flask_cors import CORS
 import os
+import shutil
 app = Flask(__name__)
 CORS(app)
 app.secret_key = 'your_secret_key'
@@ -34,7 +35,22 @@ def home():
 @app.route('/icons/<filename>')
 def serve_icon(filename):
     return send_from_directory('static/icons', filename)
+@app.route('/backup', methods=['POST'])
+def backup_file():
+    backup_folder = 'backup'
+    filename = 'list.json'
 
+    backup_file_path = os.path.join(backup_folder, filename)
+    main_file_path = os.path.join(os.getcwd(), filename)
+
+    if not os.path.exists(backup_file_path):
+        return jsonify({"error": "Backup file does not exist"}), 404
+
+    try:
+        shutil.copy(backup_file_path, main_file_path)
+        return jsonify({"message": "Backup successful"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/get_icons', methods=['GET'])
 def get_icons():
