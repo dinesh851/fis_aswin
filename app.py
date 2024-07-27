@@ -6,12 +6,8 @@ import shutil
 app = Flask(__name__)
 CORS(app)
 app.secret_key = 'your_secret_key'
-# @app.after_request
-# def after_request(response):
-#     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-#     # response.cache_control.no_store = True
 
-#     return response
+
 USERNAME = 'admin'
 PASSWORD = 'password'
 logged_in = False   
@@ -27,6 +23,13 @@ app.config['MAX_CONTENT_LENGTH'] = MAX_CONTENT_LENGTH
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.after_request
+def after_request(response):
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    # response.cache_control.no_store = True
+    return response
 
 @app.route('/')
 def home():
