@@ -40,14 +40,12 @@ body {
 .left, .right {
     padding: 20px;
 }
-
 .container {
     display: flex;
     flex-direction: column;
     width: 100%;
-    grid-column: 2.8 / 3;
+    grid-column: 2 / 3;
 }
-
 .group {
     margin-bottom: 30px;
 }
@@ -62,26 +60,26 @@ body {
 .apps {
     display: flex;
     flex-wrap: wrap;
-    justify-content:center;
+    justify-content: flex-start;
 }
 .app {
     margin: 15px;
     text-align: center;
-
-    position: relative;
-    width: calc((100% / 6) - 30px); 
+    width: calc(100% / 6 - 30px);  /* Adjusted to ensure 6 apps per row with margin */
     height: 100px;
-    flex: 1 0 calc((100% / 6) - 30px);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: move;  
+    cursor: move;
+    box-sizing: border-box;
 }
+
 .app img {
     margin-top: 15px; 
     margin-bottom: 10px;
     align-items: left;
     height: 30px;
     transition: transform 0.3s ease-out;
-} 
+}
+
 .app img:hover {
     transform: scale(1.8);
 }

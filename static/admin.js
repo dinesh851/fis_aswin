@@ -49,17 +49,18 @@ const renderApps = (appsToRender = []) => {
             appElement.setAttribute('draggable', 'true');
             appElement.setAttribute('data-index', index);
             appElement.innerHTML = `
-                <div onclick="window.open('${app.url}', '_blank')" style="cursor: pointer;">
-                    <img src="${app.image}"  alt="${app.name}">
-                    <div>${app.name}</div>
-                </div>
-                <div class="options" onclick="toggleOptions(event)">
+             <div class="options" onclick="toggleOptions(event)">
                     ⋮
                     <ul class="hidden">
                         <li onclick="editApp('${app.groupid}', ${app.id})">Edit</li>
                         <li onclick="deleteApp('${app.groupid}',${app.id})">Delete</li>
                     </ul>
                 </div>
+                <div onclick="window.open('${app.url}', '_blank')" style="cursor: pointer;">
+                    <img src="${app.image}"  alt="${app.name}">
+                    <div>${app.name}</div>
+                </div>
+               
             `;
             appElement.addEventListener('dragstart', handleDragStart);
             appElement.addEventListener('dragover', handleDragOver);
