@@ -59,7 +59,10 @@ body {
 
     text-align:left;
 }
-
+#heading{
+    position: relative;
+    left: 150px;
+}
 .apps {
     display: flex;
     flex-wrap: wrap;
