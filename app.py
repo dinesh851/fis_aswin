@@ -28,7 +28,6 @@ def allowed_file(filename):
 @app.after_request
 def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    # response.cache_control.no_store = True
     return response
 
 @app.route('/')
