@@ -98,7 +98,9 @@ def login():
             print(logged_in)
             print("logged_in : ",logged_in)
             print(f"Logged in: {logged_in}")
-            return redirect(url_for('admin'))
+            public_ip = get_public_ip()
+
+            return render_template('admin.html', public_ip=public_ip)
         else:
             flash('Invalid username or password!')
             return redirect(url_for('login'))
