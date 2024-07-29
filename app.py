@@ -11,7 +11,7 @@ app.secret_key = 'your_secret_key'
 
 USERNAME = 'admin'
 PASSWORD = 'password'
-logged_in = True   
+logged_in = False   
 
 
 UPLOAD_FOLDER = 'static/icons'
