@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, send_from_directory,make_response
 import json
 import requests
+import time
 from flask_cors import CORS
 import os
 import shutil
@@ -115,6 +116,7 @@ def logout():
 
 @app.route('/admin')
 def admin():
+    time.sleep(1)
     if not logged_in:
         flash('You need to log in first.')
         return redirect(url_for('login'))
