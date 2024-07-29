@@ -89,8 +89,12 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        print(username,password)
+        print(logged_in)
+
         if username == USERNAME and password == PASSWORD:
             logged_in = True
+            print(logged_in)
             print("logged_in : ",logged_in)
             print(f"Logged in: {logged_in}")
             return redirect(url_for('admin'))
