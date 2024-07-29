@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, send_from_directory,make_response
 import json
+import requests
 from flask_cors import CORS
 import os
 import shutil
@@ -24,6 +25,14 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+def get_public_ip():
+    try:
+        # response = requests.get('https://api.ipify.org?format=json')
+        # ip_data = response.json()
+        # return ip_data['ip']
+        return "127.0.0.1"
+    except Exception as e:
+        return "Error fetching IP"
 
 @app.after_request
 def after_request(response):
@@ -32,7 +41,9 @@ def after_request(response):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    public_ip = get_public_ip()
+    return render_template('index.html', public_ip=public_ip)
+
 
 @app.route('/icons/<filename>')
 def serve_icon(filename):
@@ -81,10 +92,9 @@ def login():
         if username == USERNAME and password == PASSWORD:
             logged_in = True
             print("logged_in : ",logged_in)
-
+            public_ip = get_public_ip()
             print(f"Logged in: {logged_in}")
-            return redirect(url_for('admin'))
-  
+            return redirect(url_for('admin', public_ip=public_ip))
         else:
             flash('Invalid username or password!')
             return redirect(url_for('login'))
@@ -96,20 +106,24 @@ def logout():
     logged_in = False
     print("logged_in : ",logged_in)
     flash('You have been logged out.')
-    return render_template('index.html')
+    public_ip = get_public_ip()
+
+    return render_template('index.html', public_ip=public_ip)
 
 @app.route('/admin')
 def admin():
     if not logged_in:
         flash('You need to log in first.')
         return redirect(url_for('login'))
-    return render_template('admin.html')
+    public_ip = get_public_ip()
+    return render_template('admin.html', public_ip=public_ip)
 @app.route('/icon')
 def icon():
     if not logged_in:
         flash('You need to log in first.')
         return redirect(url_for('login'))
-    return render_template('icon.html')
+    public_ip = get_public_ip()
+    return render_template('icon.html', public_ip=public_ip)
 
 
 

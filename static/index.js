@@ -3,7 +3,7 @@ const searchInput = document.getElementById('search');
 const newGroupName = document.getElementById('newGroupName');
 const newGroupNameContainer = document.getElementById('newGroupNameContainer');
 const folderPath = '/static/icons';  
- 
+console.log(publicIp);
 let apps = [];
 let groups = {};
 let groupHighestId = {};  
@@ -58,14 +58,15 @@ const filterApps = () => {
     renderApps(filteredApps);
 };
 function redirectToAdmin() {
-    window.location.href = 'http://localhost:5000/login';
+    window.location.href = `http://${publicIp}:5000/login`;
+
 }
 function refreshPage() {
     location.reload();
 }
 const fetchApps = async () => {
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/get_data');
+        const response = await fetch(`http://${publicIp}:5000/api/get_data`);
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
@@ -111,7 +112,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
 
         if (keySequence.join('') === correctSequence.join('')) {
-            window.location.href = 'http://127.0.0.1:5000/admin';
+            window.location.href = 'http://${publicIp}::5000/admin';
         }
     });
 });

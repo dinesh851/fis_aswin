@@ -135,15 +135,22 @@
         <!-- <textarea id="json-content" readonly></textarea> -->
     </div>
     <script>
+        var publicIp = "{{ public_ip }}";
+        console.log(publicIp);
+        console.log(publicIp);  
+    </script>
+    <script>
+        console.log(publicIp);  
+        
         async function fetchData() {
             try {
-                const jsonResponse = await fetch('http://localhost:5000/api/get_data');
+                const jsonResponse = await fetch(`http://${publicIp}:5000/api/get_data`);
                 const jsonData = await jsonResponse.json();
                 // document.getElementById('json-content').textContent = JSON.stringify(jsonData, null, 2);
                 populateTables(jsonData);
 
                 const imageList = document.getElementById('image-list');
-                const iconsResponse = await fetch('http://localhost:5000/api/get_icons');
+                const iconsResponse = await fetch(`http://${publicIp}:5000/api/get_icons`);
                 const iconsData = await iconsResponse.json();
 
                 imageList.innerHTML = '';
@@ -151,7 +158,7 @@
                     const imageItem = document.createElement('div');
                     imageItem.className = 'image-item';
                     imageItem.innerHTML = `
-                        <img src="http://localhost:5000/icons/${item.filename}" alt="${item.name}" />
+                        <img src="http://${publicIp}:5000/icons/${item.filename}" alt="${item.name}" />
                         <p>${item.name}</p>
                     `;
                     imageList.appendChild(imageItem);
@@ -224,7 +231,7 @@
 
         async function restoreBackup() {
             try {
-                const response = await fetch('http://127.0.0.1:5000/backup', {
+                const response = await fetch(`http://${publicIp}:5000/backup`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -249,7 +256,7 @@
             try {
                 const jsonData = getTableData();
                 console.log(jsonData);
-                const response = await fetch('http://localhost:5000/api/save_data', {
+                const response = await fetch(`http://${publicIp}:5000/api/save_data`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -288,7 +295,7 @@
                 return;
             }
 
-            const iconsResponse = await fetch('http://localhost:5000/api/get_icons');
+            const iconsResponse = await fetch(`http://${publicIp}:5000/api/get_icons`);
             const iconsData = await iconsResponse.json();
             const highestNumber = Math.max(0, ...iconsData.map(icon => {
                 const numberMatch = icon.name.match(/(\d+)$/);
@@ -300,7 +307,7 @@
             formData.append('file', file, newFileName);
 
             try {
-                const response = await fetch('http://localhost:5000/api/upload_icon', {
+                const response = await fetch(`http://${publicIp}:5000/api/upload_icon`, {
                     method: 'POST',
                     body: formData
                 });
@@ -322,10 +329,11 @@
         document.getElementById('restore-backup').addEventListener('click', restoreBackup);
         document.getElementById('upload-form').addEventListener('submit', uploadImage);
         document.getElementById('Admin').addEventListener('click', () => {
-            window.location.href = 'http://127.0.0.1:5000/admin';
+            window.location.href = `http://${publicIp}:5000/admin`;
         });
 
         document.addEventListener('DOMContentLoaded', fetchData);
     </script>
+   
 </body>
 </html>

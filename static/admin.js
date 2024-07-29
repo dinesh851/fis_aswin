@@ -12,7 +12,6 @@ const saveChangesButton = document.getElementById('saveChangesButton');
 const folderPath = '/static/icons';  
 const defaulticon = 0
 
-
 let draggedElement;
 let draggedElementGroup;
 let apps = [];
@@ -297,7 +296,7 @@ const saveChanges = () => {
     });
     console.log(updatedData);
 
-    fetch('http://127.0.0.1:5000/api/update', {
+    fetch(`http://${publicIp}:5000/api/update`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -343,7 +342,7 @@ appForm.addEventListener('submit', saveApp);
 
 const fetchApps = async () => {
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/get_data');
+        const response = await fetch(`http://${publicIp}:5000/api/get_data`);
         
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
@@ -380,13 +379,13 @@ const fetchApps = async () => {
 const logoutButton = document.getElementById('logout');
     
 logoutButton.addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5000/logout';
+    window.location.href = `http://${publicIp}:5000/logout`;
 });
 const addicons = document.getElementById('addicons');
 function refreshPage() {
     location.reload();
 }
 addicons.addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:5000/icon';
+    window.location.href =`http://${publicIp}:5000/icon`;
 });
 fetchApps();
