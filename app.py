@@ -11,7 +11,7 @@ app.secret_key = 'your_secret_key'
 
 USERNAME = 'admin'
 PASSWORD = 'password'
-logged_in = False   
+logged_in = True   
 
 
 UPLOAD_FOLDER = 'static/icons'
@@ -92,7 +92,6 @@ def login():
         if username == USERNAME and password == PASSWORD:
             logged_in = True
             print("logged_in : ",logged_in)
-            public_ip = get_public_ip()
             print(f"Logged in: {logged_in}")
             return redirect(url_for('admin'))
         else:
