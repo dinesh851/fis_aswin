@@ -27,10 +27,10 @@ def allowed_file(filename):
 
 def get_public_ip():
     try:
-        # response = requests.get('https://api.ipify.org?format=json')
-        # ip_data = response.json()
-        # return ip_data['ip']
-        return "127.0.0.1"
+        response = requests.get('https://api.ipify.org?format=json')
+        ip_data = response.json()
+        return ip_data['ip']
+        # return "127.0.0.1"
     except Exception as e:
         return "Error fetching IP"
 
