@@ -117,6 +117,7 @@ def logout():
 @app.route('/admin')
 def admin():
     time.sleep(1)
+    print("admin",logged_in)
     if not logged_in:
         flash('You need to log in first.')
         return redirect(url_for('login'))
