@@ -118,6 +118,8 @@ def logout():
 
 @app.route('/admin')
 def admin():
+    global logged_in   
+
     time.sleep(1)
     print("admin",logged_in)
     if not logged_in:
