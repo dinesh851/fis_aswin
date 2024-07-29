@@ -51,7 +51,6 @@ const renderApps = (appsToRender = []) => {
              <div class="options" onclick="toggleOptions(event)">
                     ⋮
                     <ul class="hidden">
-                        <li onclick="editApp('${app.groupid}', ${app.id})">Edit</li>
                         <li onclick="deleteApp('${app.groupid}',${app.id})">Delete</li>
                     </ul>
                 </div>
@@ -238,23 +237,7 @@ const saveApp = (event) => {
 };
 
 
-const editApp = (groupid, appId) => {
-    const app = apps.find(a => a.id === appId);
-    document.getElementById('appName').innerHTML = app.name;
-    document.getElementById('appURL').innerHTML = app.url;
-    console.log(app);
-    console.log(app.name);
-    console.log(app.url);
-    document.getElementById('appId').value = app.id;
-    document.getElementById('appName').value = app.name;
-    document.getElementById('appURL').value = app.url;
-
-
-    appGroup.innerHTML = '';
-    populateGroupOptions();
-    appGroup.value = app.groupid;
-    showAddAppForm();
-};
+ 
 
 const deleteApp = (groupId, appId) => {
     const numericGroupId = Number(groupId); 
