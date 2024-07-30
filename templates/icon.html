@@ -207,6 +207,7 @@
         function getTableData() {
             const containers = document.querySelectorAll('.table-container');
             const data = [];
+            console.log(data);
 
             containers.forEach(container => {
                 const item = {};
@@ -318,7 +319,7 @@
                 } else {
                     alert('Error uploading icon: ' + result.message);
                 }
-                // location.reload()
+                location.reload()
             } catch (error) {
                 console.error('Error uploading icon:', error);
                 alert('Error uploading icon');
