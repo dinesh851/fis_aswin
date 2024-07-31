@@ -1,346 +1,346 @@
 [
-  {
-    "group_id": 1,
-    "group_name": "FIS",
-    "icon": 14,
-    "id": 1,
-    "name": "WeLearn Portal",
-    "url": "https://fisglobal.sabacloud.com/Saba/Web_spf/NA10P1PRD002/app/dashboard"
-  },
-  {
-    "group_id": 1,
-    "group_name": "FIS",
-    "icon": 21,
-    "id": 2,
-    "name": "Planview Portal",
-    "url": "https://fisglobal.pvcloud.com/planview/Track/Time/"
-  },
-  {
-    "group_id": 1,
-    "group_name": "FIS",
-    "icon": 7,
-    "id": 3,
-    "name": "FNFIS",
-    "url": "https://ssp.fnfis.com/login"
-  },
-  {
-    "group_id": 1,
-    "group_name": "FIS",
-    "icon": 24,
-    "id": 4,
-    "name": "Workday portal",
-    "url": "https://wd5.myworkday.com/fis/d/home.htmld"
-  },
-  {
-    "group_id": 1,
-    "group_name": "FIS",
-    "icon": 18,
-    "id": 5,
-    "name": "MyApps",
-    "url": "https://myapps.microsoft.com"
-  },
-  {
-    "group_id": 1,
-    "group_name": "FIS",
-    "icon": 6,
-    "id": 6,
-    "name": "FIS Career page",
-    "url": "https://careers.fisglobal.com/i/us/en/home"
-  },
-  {
-    "group_id": 1,
-    "group_name": "FIS",
-    "icon": 11,
-    "id": 7,
-    "name": "Health Insurance Portal",
-    "url": "https://vidalhealthtpa.com/employeeportal/home"
-  },
-  {
-    "group_id": 2,
-    "group_name": "Ticketing",
-    "icon": 4,
-    "id": 1,
-    "name": "Dash Request",
-    "url": "https://dash.fisglobal.com/Request/Default.aspx"
-  },
-  {
-    "group_id": 2,
-    "group_name": "Ticketing",
-    "icon": 26,
-    "id": 2,
-    "name": "Service Request",
-    "url": "https://atyourserviceportal.service-now.com/supportall"
-  },
-  {
-    "group_id": 2,
-    "group_name": "Ticketing",
-    "icon": 9,
-    "id": 3,
-    "name": "Jira",
-    "url": "https://jira.fis.dev/login.jsp?"
-  },
-  {
-    "group_id": 2,
-    "group_name": "Ticketing",
-    "icon": 22,
-    "id": 4,
-    "name": "ServiceNow",
-    "url": "https://atyourserviceportal.service-now.com/now/nav/ui/classic/params/target/welcomePage.do"
-  },
-  {
-    "group_id": 2,
-    "group_name": "Ticketing",
-    "icon": 25,
-    "id": 5,
-    "name": "Wso2 Vendor Ticket Request",
-    "url": "https://support.wso2.com/support"
-  },
-  {
-    "group_id": 2,
-    "group_name": "Ticketing",
-    "icon": 23,
-    "id": 6,
-    "name": "VFP Request Portal",
-    "url": "https://rmis.fnfis.com"
-  },
-  {
-    "group_id": 3,
-    "group_name": "IST_SaaS Project",
-    "icon": 27,
-    "id": 1,
-    "name": "Wiki Page",
-    "url": "https://wiki.fnis.com/pages/viewpage.action?"
-  },
-  {
-    "group_id": 3,
-    "group_name": "IST_SaaS Project",
-    "icon": 1,
-    "id": 2,
-    "name": "Azure Portal",
-    "url": "https://portal.azure.com/#home"
-  },
-  {
-    "group_id": 3,
-    "group_name": "IST_SaaS Project",
-    "icon": 5,
-    "id": 3,
-    "name": "Dynatrace Login",
-    "url": "https://zpl24448.live.dynatrace.com/ui/dashboards?gf=all"
-  },
-  {
-    "group_id": 3,
-    "group_name": "IST_SaaS Project",
-    "icon": 15,
-    "id": 4,
-    "name": "Splunk Login",
-    "url": "https://splunk.fnfis.com/en-US/account/login?"
-  },
-  {
-    "group_id": 3,
-    "group_name": "IST_SaaS Project",
-    "icon": 17,
-    "id": 5,
-    "name": "Keyfactor Login",
-    "url": "https://fis.keyfactorpki.com/Keyfactor/Portal"
-  },
-  {
-    "group_id": 3,
-    "group_name": "IST_SaaS Project",
-    "icon": 8,
-    "id": 6,
-    "name": "ServiceNow IST_SaaS Dashboard",
-    "url": "https://atyourserviceportal.service-now.com/$pa_dashboards_overview.do"
-  },
-  {
-    "group_id": 3,
-    "group_name": "IST_SaaS Project",
-    "icon": 19,
-    "id": 7,
-    "name": "NETXMS UAT",
-    "url": "https://netxms-one-retail-uat.fisglobal.com/pm"
-  },
-  {
-    "group_id": 4,
-    "group_name": "ISTGUI",
-    "icon": 2,
-    "id": 1,
-    "name": "Chevron Prod IST GUI West",
-    "url": "https://10.18.93.163/IST-Switch/"
-  },
-  {
-    "group_id": 4,
-    "group_name": "ISTGUI",
-    "icon": 20,
-    "id": 2,
-    "name": "Paypal Prod IST GUI South East",
-    "url": "https://10.18.66.163/IST-Switch/"
-  },
-  {
-    "group_id": 4,
-    "group_name": "ISTGUI",
-    "icon": 20,
-    "id": 3,
-    "name": "Paypal Prod IST GUI East",
-    "url": "https://10.18.66.35/IST-Switch/"
-  },
-  {
-    "group_id": 4,
-    "group_name": "ISTGUI",
-    "icon": 12,
-    "id": 4,
-    "name": "Intuit Prod IST GUI East",
-    "url": "https://10.18.103.35/IST-Switch/login.jsp"
-  },
-  {
-    "group_id": 4,
-    "group_name": "ISTGUI",
-    "icon": 12,
-    "id": 5,
-    "name": "Intuit Prod IST GUI West",
-    "url": "https://10.18.102.35/IST-Switch/login.jsp"
-  },
-  {
-    "group_id": 4,
-    "group_name": "ISTGUI",
-    "icon": 13,
-    "id": 6,
-    "name": "Mastercard Prod IST GUI East",
-    "url": "https://prodgui/IST-Switch/login.jsp"
-  },
-  {
-    "group_id": 4,
-    "group_name": "ISTGUI",
-    "icon": 13,
-    "id": 7,
-    "name": "Mastercard Prod IST GUI West",
-    "url": "https://prod2gui/IST-Switch/"
-  },
-  {
-    "group_id": 5,
-    "group_name": "CrushFTP",
-    "icon": 10,
-    "id": 1,
-    "name": "Paypal East",
-    "url": "http://10.18.66.22:8080/WebInterface/login.html"
-  },
-  {
-    "group_id": 5,
-    "group_name": "CrushFTP",
-    "icon": 10,
-    "id": 2,
-    "name": "Paypal Southeast",
-    "url": "http://10.18.66.150:8080/WebInterface/login.html"
-  },
-  {
-    "group_id": 5,
-    "group_name": "CrushFTP",
-    "icon": 10,
-    "id": 3,
-    "name": "Intuit East",
-    "url": "http://10.18.103.22:8080/WebInterface/login.html"
-  },
-  {
-    "group_id": 5,
-    "group_name": "CrushFTP",
-    "icon": 10,
-    "id": 4,
-    "name": "Intuit West",
-    "url": "http://10.18.102.22:8080/WebInterface/login.html"
-  },
-  {
-    "group_id": 5,
-    "group_name": "CrushFTP",
-    "icon": 10,
-    "id": 5,
-    "name": "Chevron East",
-    "url": "http://10.18.94.150:8080/WebInterface/login.html"
-  },
-  {
-    "group_id": 5,
-    "group_name": "CrushFTP",
-    "icon": 10,
-    "id": 6,
-    "name": "Chevron West",
-    "url": "http://10.18.93.150:8080/WebInterface/login.html"
-  },
-  {
-    "group_id": 5,
-    "group_name": "CrushFTP",
-    "icon": 3,
-    "id": 7,
-    "name": "CrushFTP Admin",
-    "url": "http://10.95.135.200:8080/WebInterface/login.html?link=/WebInterface/admin/index.html"
-  },
-  {
-    "group_id": 6,
-    "group_name": "SharePoint",
-    "icon": 14,
-    "id": 1,
-    "name": "Shift Roster",
-    "url": "https://fisglobal.sharepoint.com/:x:/r/teams/ISTSaaSServiceDelivery/_layouts/15/Doc.aspx?sourcedoc=%7BE28D412F-E746-4E75-9ADF-380A60965A9A%7D&file=ISTSaaSTeam_ShiftRoster_2024.xlsx&action=default&mobileredirect=true"
-  },
-  {
-    "group_id": 6,
-    "group_name": "SharePoint",
-    "icon": 14,
-    "id": 2,
-    "name": "Certificate Passwords",
-    "url": "https://fisglobal-my.sharepoint.com/:x:/r/personal/tharunkumar_thonangi_fisglobal_com/_layouts/15/doc2.aspx?sourcedoc=%7B590A2D69-311E-46C1-ABA0-6A11A9247AAE%7D&file=TLS_Certificate_passwords.xlsx&action=default&mobileredirect=true&DefaultItemOpen=1%3Fweb%3D1"
-  },
-  {
-    "group_id": 6,
-    "group_name": "SharePoint",
-    "icon": 14,
-    "id": 3,
-    "name": "DB Passwords",
-    "url": "https://fisglobal.sharepoint.com/:x:/r/teams/ISTSaaSServiceDelivery/_layouts/15/Doc.aspx?sourcedoc=%7B78ECCD43-5E19-41E3-A67F-13F80D56B9E1%7D&file=DB_passwords_New_2023_All_Clients.xlsx&action=default&mobileredirect=true"
-  },
-  {
-    "group_id": 6,
-    "group_name": "SharePoint",
-    "icon": 14,
-    "id": 4,
-    "name": "Server List",
-    "url": "https://fisglobal.sharepoint.com/:x:/r/teams/ISTSaaSServiceDelivery/_layouts/15/Doc.aspx?sourcedoc=%7BC5C8E7D9-35E1-40D8-B7D6-39E23AF92AC5%7D&file=ISTSAASSUPPORTTEAM_server_list.xlsx&action=default&mobileredirect=true&isSPOFile=1&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNDA1MzEwMTQyMSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D"
-  },
-  {
-    "group_id": 6,
-    "group_name": "SharePoint",
-    "icon": 14,
-    "id": 5,
-    "name": "Certificate Details",
-    "url": "https://fisglobal.sharepoint.com/:x:/r/teams/ISTSwitchSaaS/_layouts/15/Doc.aspx?sourcedoc=%7B00728268-EF16-4B96-90D0-671AF2BCE956%7D&file=Certificate_Inventory_Chevron_Intuit_MC.xlsx&action=default&mobileredirect=true&wdsle=0"
-  },
-  {
-    "group_id": 6,
-    "group_name": "SharePoint",
-    "icon": 14,
-    "id": 6,
-    "name": "NETXMS New VM",
-    "url": "https://fisglobal.sharepoint.com/teams/ISTSwitchSaaS/Shared Documents/Forms/AllItems.aspx?csf=1&web=1&e=9u58p9&CID=f50c6a4d%2D15c7%2D4111%2D93fc%2D5bbb745ba57c&FolderCTID=0x0120003F0BC3DDA9CE4841AF372F1026771823&id=%2Fteams%2FISTSwitchSaaS%2FShared%20Documents%2FDocuments%2FNetxms%5Fnew%5FVM%5Fdetails%2Etxt&viewid=578e7297%2Df51e%2D4625%2D88c6%2D57a561c40e1a&parent=%2Fteams%2FISTSwitchSaaS%2FShared%20Documents%2FDocuments"
-  },
-  {
-    "group_id": 6,
-    "group_name": "SharePoint",
-    "icon": 14,
-    "id": 7,
-    "name": "Recurring Issue Tracker",
-    "url": "https://fisglobal-my.sharepoint.com/:x:/r/personal/aravind_krishna_fisglobal_com/_layouts/15/Doc.aspx?sourcedoc=%7B538ea1cf-cdf6-4c17-8861-8cef08b97ee8%7D&action=edit&wdnewandopenct=1720774214294&wdorigin=OFFICECOM-WEB.START.NEW&wdprevioussessionsrc=HarmonyWeb&wdprevioussession=beb3713b-fde3-4158-bef0-bddf8eab5e28&wdenableroaming=1&wdodb=1&wdlcid=en-US&wdhostclicktime=1720774215059&wdredirectionreason=Force_SingleStepBoot&wdinitialsession=92aa18f3-3195-549c-8e3b-f8a882496f14&wdrldsc=2&wdrldc=1&wdrldr=ContinueInExcel&CID=FF37C546-C5B6-42AD-AB41-8EE7C3C92FC1&wdLOR=c4FBE9861-4B10-448E-A0E2-D6E3EB60F4AD"
-  },
-  {
-    "group_id": 6,
-    "group_name": "SharePoint",
-    "icon": 14,
-    "id": 8,
-    "name": "Weekly Update Tracker",
-    "url": "https://fisglobal-my.sharepoint.com/:x:/r/personal/prashant_n_narayan_konnur_fisglobal_com/_layouts/15/Doc.aspx?sourcedoc=%7B1834B1FC-74EA-4F2F-8B35-95014464C086%7D&file=Weekly%20updates.xlsx&wdOrigin=TEAMS-MAGLEV.p2p_ns.rwc&action=default&mobileredirect=true"
-  },
-  {
-    "group_id": 6,
-    "group_name": "SharePoint",
-    "icon": 14,
-    "id": 9,
-    "name": "MPMS architecture",
-    "url": "https://fisglobal.sharepoint.com/teams/2022MPMS/Shared Documents/Forms/AllItems.aspx?csf=1&web=1&e=QKEcD0&CID=035caf3e%2Dc0b0%2D4257%2Dac65%2Df99df70cda8e&FolderCTID=0x012000672AAF65DFD44448A4285844882B555E&id=%2Fteams%2F2022MPMS%2FShared%20Documents%2FDelivery%2F11%20Integration%2F02%20Project%20Delivery%2F02%20Build%2FArchitecture%20diagrams"
-  }
+    {
+        "group_id": 1,
+        "group_name": "FIS",
+        "id": 1,
+        "name": "WeLearn Portal",
+        "url": "https://fisglobal.sabacloud.com/Saba/Web_spf/NA10P1PRD002/app/dashboard",
+        "icon": 16
+    },
+    {
+        "group_id": 1,
+        "group_name": "FIS",
+        "id": 2,
+        "name": "Planview Portal",
+        "url": "https://fisglobal.pvcloud.com/planview/Track/Time/",
+        "icon": 21
+    },
+    {
+        "group_id": 1,
+        "group_name": "FIS",
+        "id": 3,
+        "name": "FNFIS",
+        "url": "https://ssp.fnfis.com/login",
+        "icon": 7
+    },
+    {
+        "group_id": 1,
+        "group_name": "FIS",
+        "id": 4,
+        "name": "Workday portal",
+        "url": "https://wd5.myworkday.com/fis/d/home.htmld",
+        "icon": 24
+    },
+    {
+        "group_id": 1,
+        "group_name": "FIS",
+        "id": 5,
+        "name": "MyApps",
+        "url": "https://myapps.microsoft.com",
+        "icon": 18
+    },
+    {
+        "group_id": 1,
+        "group_name": "FIS",
+        "id": 6,
+        "name": "FIS Career page",
+        "url": "https://careers.fisglobal.com/i/us/en/home",
+        "icon": 6
+    },
+    {
+        "group_id": 1,
+        "group_name": "FIS",
+        "id": 7,
+        "name": "Health Insurance Portal",
+        "url": "https://vidalhealthtpa.com/employeeportal/home",
+        "icon": 11
+    },
+    {
+        "group_id": 2,
+        "group_name": "Ticketing",
+        "id": 1,
+        "name": "Dash Request",
+        "url": "https://dash.fisglobal.com/Request/Default.aspx",
+        "icon": 4
+    },
+    {
+        "group_id": 2,
+        "group_name": "Ticketing",
+        "id": 2,
+        "name": "Service Request",
+        "url": "https://atyourserviceportal.service-now.com/supportall",
+        "icon": 26
+    },
+    {
+        "group_id": 2,
+        "group_name": "Ticketing",
+        "id": 3,
+        "name": "Jira",
+        "url": "https://jira.fis.dev/login.jsp?",
+        "icon": 9
+    },
+    {
+        "group_id": 2,
+        "group_name": "Ticketing",
+        "id": 4,
+        "name": "ServiceNow",
+        "url": "https://atyourserviceportal.service-now.com/now/nav/ui/classic/params/target/welcomePage.do",
+        "icon": 22
+    },
+    {
+        "group_id": 2,
+        "group_name": "Ticketing",
+        "id": 5,
+        "name": "Wso2 Vendor Ticket Request",
+        "url": "https://support.wso2.com/support",
+        "icon": 25
+    },
+    {
+        "group_id": 2,
+        "group_name": "Ticketing",
+        "id": 6,
+        "name": "VFP Request Portal",
+        "url": "https://rmis.fnfis.com",
+        "icon": 23
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
+        "id": 1,
+        "name": "Wiki Page",
+        "url": "https://wiki.fnis.com/pages/viewpage.action?",
+        "icon": 27
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
+        "id": 2,
+        "name": "Azure Portal",
+        "url": "https://portal.azure.com/#home",
+        "icon": 1
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
+        "id": 3,
+        "name": "Dynatrace Login",
+        "url": "https://zpl24448.live.dynatrace.com/ui/dashboards?gf=all",
+        "icon": 5
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
+        "id": 4,
+        "name": "Splunk Login",
+        "url": "https://splunk.fnfis.com/en-US/account/login?",
+        "icon": 15
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
+        "id": 5,
+        "name": "Keyfactor Login",
+        "url": "https://fis.keyfactorpki.com/Keyfactor/Portal",
+        "icon": 17
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
+        "id": 6,
+        "name": "ServiceNow IST_SaaS Dashboard",
+        "url": "https://atyourserviceportal.service-now.com/$pa_dashboards_overview.do",
+        "icon": 8
+    },
+    {
+        "group_id": 3,
+        "group_name": "IST_SaaS Project",
+        "id": 7,
+        "name": "NETXMS UAT",
+        "url": "https://netxms-one-retail-uat.fisglobal.com/pm",
+        "icon": 19
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 1,
+        "name": "Chevron Prod IST GUI West",
+        "url": "https://10.18.93.163/IST-Switch/",
+        "icon": 2
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 2,
+        "name": "Paypal Prod IST GUI South East",
+        "url": "https://10.18.66.163/IST-Switch/",
+        "icon": 20
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 3,
+        "name": "Paypal Prod IST GUI East",
+        "url": "https://10.18.66.35/IST-Switch/",
+        "icon": 20
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 4,
+        "name": "Intuit Prod IST GUI East",
+        "url": "https://10.18.103.35/IST-Switch/login.jsp",
+        "icon": 12
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 5,
+        "name": "Intuit Prod IST GUI West",
+        "url": "https://10.18.102.35/IST-Switch/login.jsp",
+        "icon": 12
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 6,
+        "name": "Mastercard Prod IST GUI East",
+        "url": "https://prodgui/IST-Switch/login.jsp",
+        "icon": 13
+    },
+    {
+        "group_id": 4,
+        "group_name": "ISTGUI",
+        "id": 7,
+        "name": "Mastercard Prod IST GUI West",
+        "url": "https://prod2gui/IST-Switch/",
+        "icon": 13
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 1,
+        "name": "Paypal East",
+        "url": "http://10.18.66.22:8080/WebInterface/login.html",
+        "icon": 10
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 2,
+        "name": "Paypal Southeast",
+        "url": "http://10.18.66.150:8080/WebInterface/login.html",
+        "icon": 10
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 3,
+        "name": "Intuit East",
+        "url": "http://10.18.103.22:8080/WebInterface/login.html",
+        "icon": 10
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 4,
+        "name": "Intuit West",
+        "url": "http://10.18.102.22:8080/WebInterface/login.html",
+        "icon": 10
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 5,
+        "name": "Chevron East",
+        "url": "http://10.18.94.150:8080/WebInterface/login.html",
+        "icon": 10
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 6,
+        "name": "Chevron West",
+        "url": "http://10.18.93.150:8080/WebInterface/login.html",
+        "icon": 10
+    },
+    {
+        "group_id": 5,
+        "group_name": "CrushFTP",
+        "id": 7,
+        "name": "CrushFTP Admin",
+        "url": "http://10.95.135.200:8080/WebInterface/login.html?link=/WebInterface/admin/index.html",
+        "icon": 3
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 1,
+        "name": "Shift Roster",
+        "url": "https://fisglobal.sharepoint.com/:x:/r/teams/ISTSaaSServiceDelivery/_layouts/15/Doc.aspx?sourcedoc=%7BE28D412F-E746-4E75-9ADF-380A60965A9A%7D&file=ISTSaaSTeam_ShiftRoster_2024.xlsx&action=default&mobileredirect=true",
+        "icon": 14
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 2,
+        "name": "Certificate Passwords",
+        "url": "https://fisglobal-my.sharepoint.com/:x:/r/personal/tharunkumar_thonangi_fisglobal_com/_layouts/15/doc2.aspx?sourcedoc=%7B590A2D69-311E-46C1-ABA0-6A11A9247AAE%7D&file=TLS_Certificate_passwords.xlsx&action=default&mobileredirect=true&DefaultItemOpen=1%3Fweb%3D1",
+        "icon": 14
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 3,
+        "name": "DB Passwords",
+        "url": "https://fisglobal.sharepoint.com/:x:/r/teams/ISTSaaSServiceDelivery/_layouts/15/Doc.aspx?sourcedoc=%7B78ECCD43-5E19-41E3-A67F-13F80D56B9E1%7D&file=DB_passwords_New_2023_All_Clients.xlsx&action=default&mobileredirect=true",
+        "icon": 14
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 4,
+        "name": "Server List",
+        "url": "https://fisglobal.sharepoint.com/:x:/r/teams/ISTSaaSServiceDelivery/_layouts/15/Doc.aspx?sourcedoc=%7BC5C8E7D9-35E1-40D8-B7D6-39E23AF92AC5%7D&file=ISTSAASSUPPORTTEAM_server_list.xlsx&action=default&mobileredirect=true&isSPOFile=1&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNDA1MzEwMTQyMSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D",
+        "icon": 14
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 5,
+        "name": "Certificate Details",
+        "url": "https://fisglobal.sharepoint.com/:x:/r/teams/ISTSwitchSaaS/_layouts/15/Doc.aspx?sourcedoc=%7B00728268-EF16-4B96-90D0-671AF2BCE956%7D&file=Certificate_Inventory_Chevron_Intuit_MC.xlsx&action=default&mobileredirect=true&wdsle=0",
+        "icon": 14
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 6,
+        "name": "NETXMS New VM",
+        "url": "https://fisglobal.sharepoint.com/teams/ISTSwitchSaaS/Shared Documents/Forms/AllItems.aspx?csf=1&web=1&e=9u58p9&CID=f50c6a4d%2D15c7%2D4111%2D93fc%2D5bbb745ba57c&FolderCTID=0x0120003F0BC3DDA9CE4841AF372F1026771823&id=%2Fteams%2FISTSwitchSaaS%2FShared%20Documents%2FDocuments%2FNetxms%5Fnew%5FVM%5Fdetails%2Etxt&viewid=578e7297%2Df51e%2D4625%2D88c6%2D57a561c40e1a&parent=%2Fteams%2FISTSwitchSaaS%2FShared%20Documents%2FDocuments",
+        "icon": 14
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 7,
+        "name": "Recurring Issue Tracker",
+        "url": "https://fisglobal-my.sharepoint.com/:x:/r/personal/aravind_krishna_fisglobal_com/_layouts/15/Doc.aspx?sourcedoc=%7B538ea1cf-cdf6-4c17-8861-8cef08b97ee8%7D&action=edit&wdnewandopenct=1720774214294&wdorigin=OFFICECOM-WEB.START.NEW&wdprevioussessionsrc=HarmonyWeb&wdprevioussession=beb3713b-fde3-4158-bef0-bddf8eab5e28&wdenableroaming=1&wdodb=1&wdlcid=en-US&wdhostclicktime=1720774215059&wdredirectionreason=Force_SingleStepBoot&wdinitialsession=92aa18f3-3195-549c-8e3b-f8a882496f14&wdrldsc=2&wdrldc=1&wdrldr=ContinueInExcel&CID=FF37C546-C5B6-42AD-AB41-8EE7C3C92FC1&wdLOR=c4FBE9861-4B10-448E-A0E2-D6E3EB60F4AD",
+        "icon": 14
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 8,
+        "name": "Weekly Update Tracker",
+        "url": "https://fisglobal-my.sharepoint.com/:x:/r/personal/prashant_n_narayan_konnur_fisglobal_com/_layouts/15/Doc.aspx?sourcedoc=%7B1834B1FC-74EA-4F2F-8B35-95014464C086%7D&file=Weekly%20updates.xlsx&wdOrigin=TEAMS-MAGLEV.p2p_ns.rwc&action=default&mobileredirect=true",
+        "icon": 14
+    },
+    {
+        "group_id": 6,
+        "group_name": "SharePoint",
+        "id": 9,
+        "name": "MPMS architecture",
+        "url": "https://fisglobal.sharepoint.com/teams/2022MPMS/Shared Documents/Forms/AllItems.aspx?csf=1&web=1&e=QKEcD0&CID=035caf3e%2Dc0b0%2D4257%2Dac65%2Df99df70cda8e&FolderCTID=0x012000672AAF65DFD44448A4285844882B555E&id=%2Fteams%2F2022MPMS%2FShared%20Documents%2FDelivery%2F11%20Integration%2F02%20Project%20Delivery%2F02%20Build%2FArchitecture%20diagrams",
+        "icon": 14
+    }
 ]

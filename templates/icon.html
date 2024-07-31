@@ -136,11 +136,11 @@
     </div>
     <script>
         var publicIp = "{{ public_ip }}";
-        console.log(publicIp);
-        console.log(publicIp);  
+        // console.log(publicIp);
+        // console.log(publicIp);  
     </script>
     <script>
-        console.log(publicIp);  
+        // console.log(publicIp);  
         
         async function fetchData() {
             try {
@@ -207,7 +207,7 @@
         function getTableData() {
             const containers = document.querySelectorAll('.table-container');
             const data = [];
-            console.log(data);
+            // console.log(data);
 
             containers.forEach(container => {
                 const item = {};
@@ -226,7 +226,7 @@
 
                 data.push(item);
             });
-            console.log(data);
+            // console.log(data);
             return data;
         }
 
@@ -244,7 +244,7 @@
                 }
 
                 const data = await response.json();
-                console.log(data.message);
+                // console.log(data.message);
                 alert(data.message);
                 location.reload();  
             } catch (error) {
@@ -256,7 +256,7 @@
         async function saveData() {
             try {
                 const jsonData = getTableData();
-                console.log(jsonData);
+                // console.log(jsonData);
                 const response = await fetch(`http://${publicIp}:5000/api/save_data`, {
                     method: 'POST',
                     headers: {

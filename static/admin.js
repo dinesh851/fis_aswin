@@ -17,6 +17,8 @@ let draggedElementGroup;
 let apps = [];
 let groups = {};
 let groupHighestId = {};  
+let highestGroupId = 0;
+
 const renderApps = (appsToRender = []) => {
     appGrid.innerHTML = '';
 
@@ -138,7 +140,6 @@ const handleDrop = (event) => {
     if (targetGroup === draggedElementGroup && draggedElement !== targetElement) {
         const targetIndex = Array.from(targetGroup.querySelectorAll('.app')).indexOf(targetElement);
         const draggedIndex = Array.from(draggedElementGroup.querySelectorAll('.app')).indexOf(draggedElement);
-        console.log(apps);
 
         if (draggedIndex !== targetIndex) {
             const appsInGroup = apps.filter(app => app.groupid == draggedElementGroup.dataset.groupid);
@@ -196,12 +197,17 @@ const saveApp = (event) => {
     const appGroupValue = appGroup.value;
     let groupId;
     let groupName;
+    // console.log(highestGroupId);
 
     if (appGroupValue === 'new') {
-        groupId = new Date().getTime(); 
+        console.log(highestGroupId);
+        groupId =highestGroupId+ 1;
         groupName = newGroupName.value;
         groups[groupId] = groupName;
         groupHighestId[groupId] = 0;  
+        highestGroupId = groupId;  
+
+
     } else {
         groupId = Number(appGroupValue);  
         groupName = groups[groupId];
@@ -244,10 +250,10 @@ const deleteApp = (groupId, appId) => {
     const numericAppId = Number(appId);     
  
     
-    console.log(groupId,appId   );
-    console.log(apps);
+    // console.log(groupId,appId   );
+    // console.log(apps);
     apps = apps.filter(app => app.groupid !== numericGroupId || app.id !== numericAppId);
-    console.log(apps);
+    // console.log(apps);
     renderApps(apps);
 };
 
@@ -277,7 +283,7 @@ const saveChanges = () => {
             id: index + 1
         }));
     });
-    console.log(updatedData);
+    // console.log(updatedData);
 
     fetch(`http://${publicIp}:5000/api/update`, {
         method: 'POST',
@@ -297,7 +303,7 @@ const saveChanges = () => {
         }
     })
     .then(data => {
-        console.log('Success:', data);
+        // console.log('Success:', data);
         saveChangesButton.innerText = 'Saving';
         setTimeout(() => {
             saveChangesButton.innerText = 'Saved';
@@ -331,7 +337,7 @@ const fetchApps = async () => {
             throw new Error('Network response was not ok ' + response.statusText);
         }
         const data = await response.json();
-        console.log('Fetched data:', data);
+        // console.log('Fetched data:', data);
         apps = data.map(item => ({
             groupid: item.group_id,
             group_name: item.group_name,
@@ -353,6 +359,9 @@ const fetchApps = async () => {
             }
             return acc;
         }, {});
+         highestGroupId = apps.reduce((max, app) => {
+            return (app.groupid > max) ? app.groupid : max;
+          }, 0);
         renderApps(apps);
         populateGroupOptions();
     } catch (error) {

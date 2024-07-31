@@ -8,7 +8,7 @@ let apps = [];
 let groups = {};
 let groupHighestId = {};  
 const renderApps = (appsToRender = []) => {
-    console.log(appsToRender);
+    // console.log(appsToRender);
     appGrid.innerHTML = '';
     const groupedApps = appsToRender.reduce((groups, app) => {
         if (!groups[app.groupid]) {
@@ -51,9 +51,9 @@ const renderApps = (appsToRender = []) => {
 const filterApps = () => {
     const searchTerm = searchInput.value.toLowerCase();
     const filteredApps = apps.filter(app => app.name.toLowerCase().includes(searchTerm));
-    console.log(apps);
-    console.log(searchTerm);
-    console.log(filteredApps);
+    // console.log(apps);
+    // console.log(searchTerm);
+    // console.log(filteredApps);
 
     renderApps(filteredApps);
 };
@@ -71,7 +71,7 @@ const fetchApps = async () => {
             throw new Error('Network response was not ok ' + response.statusText);
         }
         const data = await response.json();
-        console.log('Fetched data:', data);
+        // console.log('Fetched data:', data);
           apps = data.map(item => ({
             groupid: item.group_id,
             group_name: item.group_name,

@@ -44,18 +44,9 @@
         </form>
         
     </div>  
-    <script>
-        // Pass the Flask variable to a JavaScript variable
-        var publicIp = "{{ public_ip }}";
-        console.log(publicIp);
-        // Use the variable in JavaScript
-        // document.getElementById("ip-address").innerText = publicIp;
-        
-        console.log(publicIp); // This will log your public IP address to the console
-    </script>
      <script>
         var publicIp = "{{ public_ip }}";
-        console.log(publicIp);  
+        // console.log(publicIp);  
     </script>
     <script src="{{ url_for('static', filename='admin.js') }}"></script>
    
